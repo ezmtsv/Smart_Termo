@@ -1,0 +1,139 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml:2:1-40:12
+	package
+		ADDED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml:3:5-32
+		INJECTED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml
+		INJECTED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml
+		INJECTED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml:2:11-69
+	android:versionCode
+		INJECTED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml
+		INJECTED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml
+uses-permission#android.permission.INTERNET
+ADDED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml:5:5-67
+	android:name
+		ADDED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml:5:22-64
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml:6:5-81
+	android:name
+		ADDED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml:6:22-78
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml:7:5-76
+	android:name
+		ADDED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml:7:22-73
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml:8:5-79
+	android:name
+		ADDED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml:8:22-76
+uses-permission#android.permission.CHANGE_WIFI_STATE
+ADDED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml:9:5-76
+	android:name
+		ADDED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml:9:22-73
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml:10:5-79
+	android:name
+		ADDED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml:10:22-76
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml:11:5-81
+	android:name
+		ADDED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml:11:22-78
+uses-permission#android.permission.android.pemissions.OVERRIDE_WIFI_CONFIG
+ADDED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml:12:5-98
+	android:name
+		ADDED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml:12:22-95
+uses-permission#android.permission.NETWORK_SETTINGS
+ADDED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml:13:5-75
+	android:name
+		ADDED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml:13:22-72
+uses-permission#android.Manifest.permission.NETWORK_MANAGED_PROVISIONING
+ADDED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml:14:5-96
+	android:name
+		ADDED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml:14:22-93
+application
+ADDED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml:16:5-38:19
+MERGED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Users\EZ\.android\build-cache\febea49385b5f200ca1261e006fb541f930583fa\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-v4:26.0.0-alpha1] C:\Users\EZ\.android\build-cache\ea3f3ab861ab5bdc3b76dbccd32f7454cf864613\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-media-compat:26.0.0-alpha1] C:\Users\EZ\.android\build-cache\c5e00fde85a2ca0af194a362867259af2c39134e\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-fragment:26.0.0-alpha1] C:\Users\EZ\.android\build-cache\d521ad28824dd78e1aa393cf10face42e6b5e17c\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-ui:26.0.0-alpha1] C:\Users\EZ\.android\build-cache\a8775caaa2c7def2abbc1e48b0d37fee49f3947b\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-utils:26.0.0-alpha1] C:\Users\EZ\.android\build-cache\69bef420ab6a4c7514b2cb83b4b4a832a4ddcef1\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:animated-vector-drawable:26.0.0-alpha1] C:\Users\EZ\.android\build-cache\e8eb996f57b6422bd16ff601f63c1b3b0f8d4f14\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-vector-drawable:26.0.0-alpha1] C:\Users\EZ\.android\build-cache\3f331539e568389b318529afc93b8f911633095e\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-compat:26.0.0-alpha1] C:\Users\EZ\.android\build-cache\3b8cc10af05df9f50e66c6715436a0c36c733a6a\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\EZ\.android\build-cache\f9b3da061e8549c739b4cae9ada0afbbf2bbdb00\output\AndroidManifest.xml:9:5-20
+	android:label
+		ADDED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml:19:9-41
+	android:supportsRtl
+		ADDED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml:21:9-35
+	android:roundIcon
+		ADDED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml:20:9-54
+	android:allowBackup
+		ADDED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml:17:9-35
+	android:icon
+		ADDED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml:18:9-43
+	android:theme
+		ADDED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml:22:9-40
+activity#com.ez.smarttermo.MainActivity
+ADDED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml:23:9-32:20
+	android:screenOrientation
+		ADDED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml:26:13-49
+	android:launchMode
+		ADDED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml:25:13-44
+	android:name
+		ADDED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml:24:13-41
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml:27:13-31:29
+action#android.intent.action.MAIN
+ADDED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml:28:17-69
+	android:name
+		ADDED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml:28:25-66
+category#android.intent.category.LAUNCHER
+ADDED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml:30:17-77
+	android:name
+		ADDED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml:30:27-74
+service#com.ez.smarttermo.WaitAnswerCom
+ADDED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml:34:9-37:47
+	android:enabled
+		ADDED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml:36:13-35
+	android:exported
+		ADDED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml:37:13-36
+	android:name
+		ADDED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml:35:13-42
+uses-sdk
+INJECTED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Users\EZ\.android\build-cache\febea49385b5f200ca1261e006fb541f930583fa\output\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:support-v4:26.0.0-alpha1] C:\Users\EZ\.android\build-cache\ea3f3ab861ab5bdc3b76dbccd32f7454cf864613\output\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-media-compat:26.0.0-alpha1] C:\Users\EZ\.android\build-cache\c5e00fde85a2ca0af194a362867259af2c39134e\output\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-fragment:26.0.0-alpha1] C:\Users\EZ\.android\build-cache\d521ad28824dd78e1aa393cf10face42e6b5e17c\output\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-core-ui:26.0.0-alpha1] C:\Users\EZ\.android\build-cache\a8775caaa2c7def2abbc1e48b0d37fee49f3947b\output\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:26.0.0-alpha1] C:\Users\EZ\.android\build-cache\69bef420ab6a4c7514b2cb83b4b4a832a4ddcef1\output\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:animated-vector-drawable:26.0.0-alpha1] C:\Users\EZ\.android\build-cache\e8eb996f57b6422bd16ff601f63c1b3b0f8d4f14\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:26.0.0-alpha1] C:\Users\EZ\.android\build-cache\3f331539e568389b318529afc93b8f911633095e\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:26.0.0-alpha1] C:\Users\EZ\.android\build-cache\3b8cc10af05df9f50e66c6715436a0c36c733a6a\output\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\EZ\.android\build-cache\f9b3da061e8549c739b4cae9ada0afbbf2bbdb00\output\AndroidManifest.xml:5:5-7:41
+	tools:overrideLibrary
+		ADDED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Users\EZ\.android\build-cache\febea49385b5f200ca1261e006fb541f930583fa\output\AndroidManifest.xml:23:9-75
+	android:targetSdkVersion
+		INJECTED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml
+		INJECTED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml
+		INJECTED from D:\EZ\PRJ\Termostat\Android_termo\Smart_Termo\SmartTermo\app\src\main\AndroidManifest.xml
+meta-data#android.support.VERSION
+ADDED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Users\EZ\.android\build-cache\febea49385b5f200ca1261e006fb541f930583fa\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-v4:26.0.0-alpha1] C:\Users\EZ\.android\build-cache\ea3f3ab861ab5bdc3b76dbccd32f7454cf864613\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-media-compat:26.0.0-alpha1] C:\Users\EZ\.android\build-cache\c5e00fde85a2ca0af194a362867259af2c39134e\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-fragment:26.0.0-alpha1] C:\Users\EZ\.android\build-cache\d521ad28824dd78e1aa393cf10face42e6b5e17c\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-core-ui:26.0.0-alpha1] C:\Users\EZ\.android\build-cache\a8775caaa2c7def2abbc1e48b0d37fee49f3947b\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-core-utils:26.0.0-alpha1] C:\Users\EZ\.android\build-cache\69bef420ab6a4c7514b2cb83b4b4a832a4ddcef1\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:animated-vector-drawable:26.0.0-alpha1] C:\Users\EZ\.android\build-cache\e8eb996f57b6422bd16ff601f63c1b3b0f8d4f14\output\AndroidManifest.xml:22:5-24:41
+MERGED from [com.android.support:support-vector-drawable:26.0.0-alpha1] C:\Users\EZ\.android\build-cache\3f331539e568389b318529afc93b8f911633095e\output\AndroidManifest.xml:22:5-24:41
+MERGED from [com.android.support:support-compat:26.0.0-alpha1] C:\Users\EZ\.android\build-cache\3b8cc10af05df9f50e66c6715436a0c36c733a6a\output\AndroidManifest.xml:25:5-27:41
+	android:value
+		ADDED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Users\EZ\.android\build-cache\febea49385b5f200ca1261e006fb541f930583fa\output\AndroidManifest.xml:27:9-38
+	android:name
+		ADDED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Users\EZ\.android\build-cache\febea49385b5f200ca1261e006fb541f930583fa\output\AndroidManifest.xml:26:9-47
