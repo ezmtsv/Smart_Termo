@@ -7,7 +7,7 @@
     <string name="no">No</string>
     <string name="maybe">Maybe</string>
     <string name="message_text">Text of your message</string>
-    <string name="about">Версия 2.9\nРазработано "Appstudio_EZ" 2018г.
+    <string name="about">Версия 3.0\nРазработано "Appstudio_EZ" 2018г.
         Требуемая версия Android 4.3 или более поздняя.\n\n</string>
     <string name="yes">Применить</string>
     <string name="sbrosESP"> Внимание!\n При активации этого режима будут удалены все предыдущие настройки, включая настройки почты и сети WIFI!\n

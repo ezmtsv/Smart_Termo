@@ -1,7 +1,6 @@
 package com.ez.dialog;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.TimePickerDialog;
 import android.content.Context;
@@ -724,12 +723,12 @@ public class DialogSelect extends DialogFragment {
                         if (obj.flagBoilerONCUR) {
                             obj.flagBoilerON = false;
                             obj.cmd = DataForSend.SET_ON_OFF_BOILER;
-                            dismiss();
                         }
                         else {
                             obj.flagBoilerON = true;
                             obj.cmd = DataForSend.SET_ON_OFF_BOILER;
                         }
+                        dismiss();
 
                     }
                 };

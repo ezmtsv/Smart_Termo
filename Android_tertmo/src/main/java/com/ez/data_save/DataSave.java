@@ -2,7 +2,6 @@ package com.ez.data_save;
 
 import java.io.Serializable;
 import java.util.HashMap;
-;
 
 /**
  * Created by EZ on 07.02.2023.

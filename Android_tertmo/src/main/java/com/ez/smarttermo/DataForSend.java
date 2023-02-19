@@ -11,7 +11,7 @@ public class DataForSend {
     public static final int SET_ON_OFF_ALARM_HEAT =       0x23;       // Аварийное откл. нагрева
     public static final int SYNCHRO =                     0x64;       // синхронизировать время                           //десятич.с. 100
     public static final int SYNCHRO_TIME_TARIFF =         0x67;       // синхронизировать время работы по тарифу          //десятич.с. 103
-    public static final int SET_COEF =                    0x93;       // принять и сохранить коэффициенты калибр.          //десятич.с. 147
+    public static final int SET_COEF =                    0x24;       // принять и сохранить коэффициенты калибр.         //десятич.с. 36
     public static final int SET_GAS	=                     0x75;       // выбор режима работы газ-эл.                      //десятич.с. 117
     public static final int SET_WORK_TARIFF =             0x78;       // вкл.-выкл. режима работы день-ночь               //десятич.с. 120
     public static final int COOL_MODE_ON =			      0x39;       // вкл. режим охлажд.                               //десятич.с. 57

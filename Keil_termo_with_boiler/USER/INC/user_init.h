@@ -63,7 +63,7 @@
 #define  cmd_noreq_1s                   0x83
 #define  cmd_noreq_15s                  0x84
 #define  cmd_req                        0x34
-#define  cmd_save_kf                    0x93
+#define  cmd_save_kf                    0x24
 #define  status_OK                      0x55
 #define  status_NO                      0x33
 #define  set_tmp                        0x44

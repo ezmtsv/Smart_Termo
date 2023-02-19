@@ -1,9 +1,7 @@
 package com.ez.smarttermo;
 
 import android.util.Log;
-
 import com.ez.data_receive.ObjTelemetry;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -19,7 +17,7 @@ public class SendParam implements Cur_Data_ForSend{
         this.obj = obj;
         buf = new char[192];
         buf_int = new int[192];
-        for (int i = 0; i < 192; i++) buf[i] = ' ';
+        for (int i = 0; i < 192; i++) buf[i] = '_';
         String str = "EZAP";                                  // преамбула
         str.getChars(0, 4, buf, 0);
         obj.sys_DATA = find_SECOND (cur_data());
@@ -46,7 +44,7 @@ public class SendParam implements Cur_Data_ForSend{
         buf_int[shift] = obj.flagGASOk;
         shift++;
         buf_int[shift] = obj.flagTarifOk;
-        shift++;
+        shift += 2;
         buf_int[shift] = obj.sys_DATA  & 0xff;
         shift++;
         buf_int[shift] = (obj.sys_DATA >> 8)  & 0xff;
@@ -60,7 +58,7 @@ public class SendParam implements Cur_Data_ForSend{
         buf_int[shift] = obj.airTariffGist  & 0xff;
         shift++;
         buf_int[shift] = obj.setAirTmp  & 0xff;
-        shift++;
+        shift += 5;
         buf_int[shift] = (obj.setBoilerTmp * 100) & 0xff;
         shift++;
         buf_int[shift] = ((obj.setBoilerTmp * 100) >> 8) & 0xff;
@@ -70,10 +68,11 @@ public class SendParam implements Cur_Data_ForSend{
         if (obj.flagBoilerON) buf_int[shift] = 1;
         else buf_int[shift] = 0;
         shift++;
-        if (obj.flagBoilerON) buf_int[shift] = 1;
+        if (obj.flagNOTHeat) buf_int[shift] = 1;
         else buf_int[shift] = 0;
         shift++;
-        //       System.out.println("SendParam " + buf[0]+buf[1]+buf[2]+buf[3]);
+        for(int i = 0; i<64; i++) buf_int[i] = (int)buf[i];
+
         crc_send = obj.CalculateCRC (buf_int, 123);                     // вычисляем контрольную сумму по 123 байт массива включительно
         buf_int[124] = (int)(crc_send & 0xff);
         buf_int[125] = (int)((crc_send>>8)&0xff);
@@ -89,12 +88,9 @@ public class SendParam implements Cur_Data_ForSend{
                 buf_int[j + 64] = 0;
             }
         }
-        for (int i = 0; i<64; i++) {
-            buf_int[i] = (int)buf[i];
-        }
-        for (int j=64; j<192; j++) {
-            buf[j] = (char)buf_int[j];
-        }
+
+        for (int j=64; j<192; j++) buf[j] = (char)buf_int[j];
+
     }
 
     @Override

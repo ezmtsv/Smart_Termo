@@ -36,6 +36,8 @@ import com.ez.dialog.DialogSelect;
 import com.ez.dialog.VisualCommand;
 import com.ez.screen.DisplayParam;
 
+import java.util.HashMap;
+
 
 public class MainActivity extends AppCompatActivity implements View.OnTouchListener,
         LoaderManager.LoaderCallbacks<ReadyDataForScreen>, DialogSelect.OnCompleteListener,
@@ -43,8 +45,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
     private ImageView prg_img;
     private View item_img = null;
-    private TextView daybtn;
-    private TextView nightbtn;
     private TextView tmpset;
     private TextView status;
     private TextView txt_dev;
@@ -78,9 +78,10 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     ObjTelemetry objTelemetry;
     DataSave dataSaves;
     ReadWriteData rwData;
-    Intent intentserv;
+    private HashMap<String, String []> dev;
 
     Loader<ReadyDataForScreen> loaderReceive;
+//    Loader<ReadyDataForScreen> loaderSend;
 
     private int touchFlag = 0;
     private boolean flag_toch_menu = false;
@@ -93,16 +94,10 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     private int time_toch_menu = 0;
     private int eX, eY, poseY;
     private final int IDLOADERGET = 1;
-    private final int IDLOADERSEND = 2;
+//    private final int IDLOADERSEND = 2;
     private byte cnt = 0;
     private int waitAnswercom = 0;
     private int tempScreen = 0;
-
-//    private final String FILENAME = "dataSmartTermo";
-//    private int cmd = 100;
-//    private int cmd = DataForSend.REQ_DATA;
-//    private int setAirTmp;
-//    private int setBoilerTmp;
     private boolean statusSock;
 
     String tag = "tag";
@@ -167,7 +162,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                         case MotionEvent.ACTION_MOVE:
                             eX = (int) event.getX();
                             eY = (int) event.getY();
-                            touchFlag = 1;
+                            touchFlag = 2;
                             if (item_img.getId() == R.id.progress_img) {
                                 if (visible_set_TMP == 2) showtmp.sendEmptyMessage((eX/d.step_boiler) + 5);
                                 if (visible_set_TMP == 1) showtmp.sendEmptyMessage((eX/d.step) + 5);
@@ -180,12 +175,12 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                                 case R.id.fon_air:
                                     fon_air.setImageDrawable(d.createLayerDrawable(R.drawable.fon_air, (float) 0.45, (float) 0.25));
                                     if (visible_set_TMP == 2) visible_set_TMP = 0;
-                                    show_bar_set_tmp(visible_set_TMP + 2);
+                                    show_bar_set_tmp (visible_set_TMP + 2);
                                     break;
                                 case R.id.fon_boiler:
                                     fon_boiler.setImageDrawable(d.createLayerDrawable(R.drawable.fon_boiler, (float) 0.45, (float) 0.25));
                                     if (visible_set_TMP == 1) visible_set_TMP = 0;
-                                    show_bar_set_tmp(visible_set_TMP + 4);
+                                    show_bar_set_tmp (visible_set_TMP + 4);
                                     break;
                                 case R.id.fon_out:
                                     fon_out.setImageDrawable(d.createLayerDrawable(R.drawable.fon_out, (float) 0.45, (float) 0.25));
@@ -200,6 +195,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                                     break;
                             }
                             touchFlag = 0;
+                            Log.d(tag, "onTouch UP_" + touchFlag);
                             flag_toch_menu = false;
                             break;
                     }
@@ -211,43 +207,49 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
     }
 ///////////END onCREATE//////////
-///////////END onCREATE//////////
-///////////END onCREATE//////////
-
     @Override
     public Loader<ReadyDataForScreen> onCreateLoader(int id, Bundle args) {
 //        log ("MainActivity onCreateLoader");
-        if (id == IDLOADERSEND) loaderReceive = new LoaderData(this, args);
-        else loaderReceive = new LoaderData(this);
+/*        if (id == IDLOADERSEND) {
+            loaderSend = new LoaderData(this, args);
+            return loaderSend;
+        }
+        else {
+            loaderReceive = new LoaderData(this);
+            return loaderReceive;
+        }*/
+        loaderReceive = new LoaderData(this);
         return loaderReceive;
+
     }
 
     @Override
     public void onLoadFinished(Loader<ReadyDataForScreen> loader, ReadyDataForScreen data) {
-        if (loader.getId() == IDLOADERGET) {
+                log("MainActivity onLoadFinished");
+//                log("statusSocket " + data.get_statusSocket());
+//                log("airHomeTmp " + data.get_airHomeTmp());
+//                log("airOutTmp " + data.get_airOutTmp());
+//                log("boilerTmp " + data.get_boilerTmp());
+//                log("waterTmp " + data.get_waterTmp());
+//                log("airBoilerADC() " + data.get_airBoilerADC());
+//                log("airHomeADC() " + data.get_airHomeADC());
+//                log("airOutADC " + data.get_airOutADC());
+//                log("airWaterADC " + data.get_airWaterADC());
+//                log("boilerTmpGist() " + data.get_boilerTmpGist());
+//                log("chargeAccum() " + data.get_chargeAccum());
+//                log("command() " + data.get_command());
+//                log("count_COMAND " + data.get_count_COMAND());
+//                log("setAirTmp " + data.get_setAirTmp());
+//                log("setBoilerTmp " + data.get_setBoilerTmp());
+//                log("timeHeat() " + data.get_timeHeat());
+//                log("timeServer " + data.get_timeServer());
+//                log("timeWork " + data.get_timeWork());
+//               log("statusWorkGAS " + data.get_statusWorkGAS());
+//                log("statusSocket " + data.get_statusWorkTariff());
+
+//        if (loader.getId() == IDLOADERGET) {
             //log ("test loader IDLOADERGET " + loaderReceive);
             if (data != null) {
-                /*log("MainActivity onLoadFinished");
-                log("statusSocket " + data.get_statusSocket());
-                log("airHomeTmp " + data.get_airHomeTmp());
-                log("airOutTmp " + data.get_airOutTmp());
-                log("boilerTmp " + data.get_boilerTmp());
-                log("waterTmp " + data.get_waterTmp());
-                log("airBoilerADC() " + data.get_airBoilerADC());
-                log("airHomeADC() " + data.get_airHomeADC());
-                log("airOutADC " + data.get_airOutADC());
-                log("airWaterADC " + data.get_airWaterADC());
-                log("boilerTmpGist() " + data.get_boilerTmpGist());
-                log("chargeAccum() " + data.get_chargeAccum());
-                log("command() " + data.get_command());
-                log("count_COMAND " + data.get_count_COMAND());
-                log("setAirTmp " + data.get_setAirTmp());
-                log("setBoilerTmp " + data.get_setBoilerTmp());
-                log("timeHeat() " + data.get_timeHeat());
-                log("timeServer " + data.get_timeServer());
-                log("timeWork " + data.get_timeWork());
-                log("statusWorkGAS " + data.get_statusWorkGAS());
-                log("statusSocket " + data.get_statusWorkTariff());*/
                 progressBar.setVisibility(View.GONE);
                 updateScreen(data);
             } else {
@@ -255,44 +257,10 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                 statusSock = false;
                 status.setText("Ожидаю соединения...");
             }
-            if (loaderReceive != null) {
-                //log ("test loader loaderReceive != null ");
-                getSupportLoaderManager().destroyLoader(IDLOADERGET);
-            }
-//            if (objTelemetry.cmd == DataForSend.REQ_DATA) {
-            if (waitAnswercom == 0 || waitAnswercom == VisualCommand.ANSWERCOM_WAIT) {
-                if (waitAnswercom == VisualCommand.ANSWERCOM_WAIT && (cnt%3) == 0) {
-                    Bundle bndl = new Bundle();
-                    bndl.putSerializable("OBJ_SEND", objTelemetry);
-                    objTelemetry.cnt_repeat++;
-                    getSupportLoaderManager().initLoader(IDLOADERSEND, bndl, this);
-                    //log ("MainActivity DEB start Loader SEND, waitAnswercom = " + waitAnswercom);
-                } else {
-                    getSupportLoaderManager().restartLoader(IDLOADERGET, null, this);
-                    //log ("MainActivity DEB start Loader GET, waitAnswercom = " + waitAnswercom);
-                }
-            } else {
-                waitAnswercom = 0;
-                objTelemetry.cnt_repeat = 0;
-                cnt = 0;
-                objTelemetry.cmd = DataForSend.REQ_DATA;
-                getSupportLoaderManager().restartLoader(IDLOADERGET, null, this);
-                log ("MainActivity DEB STOP WAIT, waitAnswercom = " + waitAnswercom);
-            }
-            /*else if (waitAnswercom == VisualCommand.ANSWERCOM_WAIT) {
-                Bundle bndl = new Bundle();
-                bndl.putSerializable("OBJ_SEND", objTelemetry);
-                getSupportLoaderManager().initLoader(IDLOADERSEND, bndl, this);
-            }*/
-            cnt++;
-        } else if (loader.getId() == IDLOADERSEND) {
-            //objTelemetry.cmd = DataForSend.REQ_DATA;
-            if (loaderReceive != null) {
-                getSupportLoaderManager().destroyLoader(IDLOADERSEND);
-            }
+            if (loaderReceive != null) getSupportLoaderManager().destroyLoader(IDLOADERGET);
             getSupportLoaderManager().restartLoader(IDLOADERGET, null, this);
-        }
-
+//        }
+        cnt++;
         if (flag_toch_menu && cnt > 5) {
             if (!flag_calibrovka) show_dialog(5);
             flag_calibrovka = true;
@@ -316,11 +284,11 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                 touchFlag = 1;
                 item_img = v;
                 if (item_img.getId() == R.id.butback_stat_img) handlbuckstat();
-                Log.d(tag, "onTouch DOWN_");
+                Log.d(tag, "onTouch DOWN_" + touchFlag);
                 break;
             case MotionEvent.ACTION_UP:
                 touchFlag = 3;
-                Log.d(tag, "onTouch UP_");
+                Log.d(tag, "onTouch UP_" + touchFlag);
                 break;
             default:
                 break;
@@ -485,9 +453,11 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         statusSock = false;
         objTelemetry.cmd = DataForSend.REQ_DATA;
         objTelemetry.cnt_repeat = 0;
+        objTelemetry.count_cmd = 125;
     }
 
-    void show_bar_set_tmp(int set_visible){
+    void show_bar_set_tmp (int set_visible) {
+        touchFlag = 0;
         switch (set_visible) {
             case 2:                 // включение бара настройки темп. воздуха
                 lay_tmpset.setVisibility(View.VISIBLE);
@@ -538,7 +508,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         popupMenu.inflate(R.menu.menu); // Для Android 4.0
         MenuItem itemCOOL = popupMenu.getMenu().getItem(4);
         MenuItem itemBoiler = popupMenu.getMenu().getItem(5);
-        MenuItem itemAlarmOFF = popupMenu.getMenu().getItem(11);
+        MenuItem itemAlarmOFF = popupMenu.getMenu().getItem(13);
 
         if(objTelemetry.flagInversOUTOkCUR){
             itemCOOL.setChecked(true);
@@ -641,7 +611,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         int temp = msg.what;
         DisplayParam.BarShowTmp bar = d.showtmp(visible_set_TMP, eY, poseY, temp);
         if (visible_set_TMP == 2) {
-            if (change_tmp && touchFlag != 1 && waitAnswercom == 0) {
+            if (change_tmp && touchFlag == 0 && waitAnswercom == 0) {
                 //objTelemetry.setBoilerTmpCUR = temp;
                 objTelemetry.cmd = DataForSend.SET_TMPBR;
                 objTelemetry.setBoilerTmp = temp;
@@ -650,7 +620,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
              }
         }
         if (visible_set_TMP == 1) {
-            if (change_tmp  && touchFlag != 1) {
+            if (change_tmp  && touchFlag == 0 && waitAnswercom == 0) {
                 //objTelemetry.setAirTmpCUR = temp;
                 objTelemetry.cmd = DataForSend.SET_TMP;
                 objTelemetry.setAirTmp = temp;
@@ -705,29 +675,19 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             status_heat.setText(data.get_statusHeat());
             if (data.get_flagHeatingOk()) status_heat.setTextColor(Color.RED);
             else status_heat.setTextColor(getResources().getColor(R.color.default_));
-/*                if (Integer.parseInt(data.get_setAirTmp()) != objTelemetry.setAirTmpCUR) {
-                    objTelemetry.setAirTmpCUR = Integer.parseInt(data.get_setAirTmp());
-                    showtmp.sendEmptyMessage(objTelemetry.setAirTmpCUR);
-                }
-                if (Integer.parseInt(data.get_setBoilerTmp()) != objTelemetry.setBoilerTmpCUR) {
-                    objTelemetry.setBoilerTmpCUR = Integer.parseInt(data.get_setBoilerTmp());
-                    showtmp.sendEmptyMessage(objTelemetry.setBoilerTmpCUR);
-                }*/
-
-            if (touchFlag != 1) {
+            if (touchFlag == 0 && !change_tmp) {
                 objTelemetry.setAirTmpCUR = Integer.parseInt(data.get_setAirTmp());
                 objTelemetry.setBoilerTmpCUR = Integer.parseInt(data.get_setBoilerTmp());
+                if (waitAnswercom != VisualCommand.ANSWERCOM_WAIT) {
+                    if (visible_set_TMP == 1) {
+                        if (tempScreen != objTelemetry.setAirTmpCUR) showtmp.sendEmptyMessage(objTelemetry.setAirTmpCUR);
+                    }
+                    if (visible_set_TMP == 2) {
+                        if (tempScreen != objTelemetry.setBoilerTmpCUR) showtmp.sendEmptyMessage(objTelemetry.setBoilerTmpCUR);
+                    }
+                 }
             }
-            if (waitAnswercom != VisualCommand.ANSWERCOM_WAIT) {
-                if (visible_set_TMP == 1) {
-                    if (tempScreen != objTelemetry.setAirTmpCUR) showtmp.sendEmptyMessage(objTelemetry.setAirTmpCUR);
-                }
-                if (visible_set_TMP == 2) {
-                    if (tempScreen != objTelemetry.setBoilerTmpCUR) showtmp.sendEmptyMessage(objTelemetry.setBoilerTmpCUR);
-                }
- //               log ("MainActivity setAirTmpCUR " + objTelemetry.setAirTmpCUR + "  " + objTelemetry.setAirTmp);
- //               log ("MainActivity setBoilerTmpCUR " + objTelemetry.setBoilerTmpCUR + "  " + objTelemetry.setBoilerTmp);
-            }
+            //log ("MainActivity touchFlag " + touchFlag + " change_tmp " + change_tmp);
             if (data.get_statusSocket().equals("Соединение установлено")) {
               statusSock = true;
             }
@@ -742,17 +702,25 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                 txtGAS_EL.setTextColor(getResources().getColor(R.color.Color_EL));
             }
 //            if (objTelemetry.cmd != DataForSend.REQ_DATA) {
+                objTelemetry.boilerTmpGistCUR = data.get_boilerTmpGistINT();
                 objTelemetry.flagNOTHeatCUR = data.get_flagNOTHeat();
-                objTelemetry.flagInversOUTOkCUR = data.get_flagInversOUTOk();
-                objTelemetry.flagBoilerONCUR = data.get_flagBoilerON();
-                objTelemetry.timeNightSecCUR = data.get_timeNightSec();
-                objTelemetry.timeDaySecCUR = data.get_timeDaytSec();
-                objTelemetry.cmdCUR = Integer.parseInt(data.get_command());
-                objTelemetry.count_cmdCUR = Integer.parseInt(data.get_count_COMAND());
-                if (data.get_flagTarifOk()) objTelemetry.flagTarifOkCUR = DataForSend.OK;
-                else objTelemetry.flagTarifOkCUR = DataForSend.NO;
-//                log ("objTelemetry.flagTarifOkCUR " + objTelemetry.flagTarifOkCUR);
-//            }
+//            log ("objTelemetry.flagNOTHeatCUR " + objTelemetry.flagNOTHeatCUR);
+//            log ("cmdCUR " + objTelemetry.cmdCUR + " cmd " +objTelemetry.cmd);
+//            log (" count_cmdCUR " + objTelemetry.count_cmdCUR + " count_cmd " + objTelemetry.count_cmd);
+            objTelemetry.flagInversOUTOkCUR = data.get_flagInversOUTOk();
+            objTelemetry.flagBoilerONCUR = data.get_flagBoilerON();
+            objTelemetry.timeNightSecCUR = data.get_timeNightSec();
+            objTelemetry.timeDaySecCUR = data.get_timeDaytSec();
+            objTelemetry.cmdCUR = Integer.parseInt(data.get_command());
+            objTelemetry.count_cmdCUR = Integer.parseInt(data.get_count_COMAND());
+            if (data.get_flagTarifOk()) objTelemetry.flagTarifOkCUR = DataForSend.OK;
+            else objTelemetry.flagTarifOkCUR = DataForSend.NO;
+            if (objTelemetry.cmdCUR == DataForSend.SET_LINK) {
+                objTelemetry.ServerIPCUR = data.get_serverIP();
+//                log ("MainActivity ServerIPCUR " + objTelemetry.ServerIPCUR);
+//                log ("MainActivity portServ " + data.get_portServ());
+            }
+
         } catch (Exception e) { log ("Exception updateScreen!"); }
     }
 
@@ -793,19 +761,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         }
         if (objTelemetry.cmd != DataForSend.REQ_DATA) {
             sendCommand();
-            /*if (waitAnswercom == 0) {
-                waitAnswercom = VisualCommand.ANSWERCOM_WAIT;
-                sendCommand();
-            }
-            else {
-                DialogSelect.show_txt_toast ("Дождитесь выполнения предыдущей команды!", cntx);
-            }*/
-            /*obj.count_cmd++;
-            if (obj.count_cmd > 255) obj.count_cmd = 0;
-            //new VisualCommand ("Thread1", objTelemetry, cntx).start();
-            VisualCommand viscom = new VisualCommand ("Thread1", objTelemetry, cntx);
-            viscom.onAttachANSW(this);
-            viscom.start();*/
         }
     }
 
@@ -826,6 +781,19 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     public void onCompleteANSW(int answ) {
         waitAnswercom = answ;
         log ("MainAcnivity onCompleteANSW " + answ);
+        waitAnswercom = 0;
+        if (objTelemetry.cmd == DataForSend.SET_LINK && objTelemetry.ServerIPCUR.length() == 15) {
+            dev = dataSaves.get_devices();
+            dev.put(objTelemetry.ServerIPCUR, new String[]{"Газ", "Электро"});
+            dataSaves.put_devices(dev);
+            rwData.saveData (dataSaves);
+
+            dataSaves.set_curDevice(objTelemetry.ServerIPCUR);
+            rwData.saveData (dataSaves);
+            objTelemetry.ServerIP = objTelemetry.ServerIPCUR;
+        }
+       if (objTelemetry.cmd == DataForSend.SET_COEF) flag_calibrovka = false;
+        objTelemetry.cmd = DataForSend.REQ_DATA;
     }
 
     void sendCommand () {
@@ -833,10 +801,12 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             if (waitAnswercom == 0) {
                 waitAnswercom = VisualCommand.ANSWERCOM_WAIT;
                 objTelemetry.count_cmd++;
-                cnt = 0;
-                if (objTelemetry.count_cmd > 255) objTelemetry.count_cmd = 0;
-                //new VisualCommand ("Thread1", objTelemetry, cntx).start();
-                VisualCommand viscom = new VisualCommand("Thread1", objTelemetry, cntx);
+                objTelemetry.cnt_repeat = 0;
+                if (objTelemetry.count_cmd > 126) objTelemetry.count_cmd = 0;
+                Cur_Data_ForSend objsend;
+                objsend = new DataForSend(objTelemetry).getInitClasses();
+                String message = objsend.readyStringData();
+                VisualCommand viscom = new VisualCommand("Thread1", objTelemetry, message, cntx);
                 viscom.onAttachANSW(this);
                 viscom.start();
             } else {

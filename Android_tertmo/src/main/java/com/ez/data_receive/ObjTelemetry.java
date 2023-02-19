@@ -25,7 +25,6 @@ public class ObjTelemetry implements Serializable{
     static public int count_cmd;
     static public String name_SSID;
     static public String pass_SSID;
-    static public String login_mail;
     static public String pass_mail;
     static public String name_smtp_serv;
     static public String mail_port_serv;
@@ -45,6 +44,7 @@ public class ObjTelemetry implements Serializable{
     static public String[] coeffStrArray;
     static public int cnt_repeat;
 
+    static public String ServerIPCUR;
     static public boolean flagInversOUTOkCUR;
     static public boolean flagBoilerONCUR;
     static public boolean flagNOTHeatCUR;

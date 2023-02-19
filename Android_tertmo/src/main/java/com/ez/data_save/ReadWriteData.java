@@ -2,14 +2,12 @@ package com.ez.data_save;
 
 import android.content.Context;
 import android.util.Log;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import static java.security.AccessController.getContext;
 
 /**
  * Created by EZ on 07.02.2023.

@@ -1,6 +1,8 @@
 package com.ez.data_receive;
 
 import android.support.annotation.NonNull;
+import com.ez.smarttermo.DataForSend;
+
 
 public class TelemetrySmartTermo extends Telemetry{
     private final int signs;
@@ -36,6 +38,9 @@ public class TelemetrySmartTermo extends Telemetry{
     private String airWaterADC;
     private String airBoilerADC;
     private String flagNOHeat;
+    private String serverIP;
+    private String portServ;
+    private String macADR;
     private final Integer [] data;
 
     public TelemetrySmartTermo(@NonNull char[] Buf) {
@@ -88,6 +93,9 @@ public class TelemetrySmartTermo extends Telemetry{
     public String get_airOutADC () { return airOutADC; }
     public String get_airBoilerADC () { return airBoilerADC; }
     public String get_flagNOHeat () { return flagNOHeat; }
+    public String get_serverIP () { return serverIP; }
+    public String get_portServ () { return portServ; }
+    public String get_macADR () { return macADR; }
     public Integer get_timeNightSec () {
         return timeNightSec;
     }
@@ -120,6 +128,8 @@ public class TelemetrySmartTermo extends Telemetry{
     @Override
     void init_Data () {
         int tmp;
+        macADR = "";
+        for (int i = 0; i <6; i++) macADR = macADR + String.format("%02X", data[i]) + ".";
         tmp = data[shift];
         shift++;
         tmp = ((data[shift])<<8) |  tmp;
@@ -295,6 +305,12 @@ public class TelemetrySmartTermo extends Telemetry{
         tmp = data[shift]; shift++;                                                 // Значение ADC бойлера
         tmp = ((data[shift])<<8) | tmp; shift++;
         airBoilerADC = Integer.toString(tmp);
+        if (command == DataForSend.SET_LINK) {
+            serverIP = "";
+            portServ = "";
+            for (int i = 0; i < 12; i++) serverIP = serverIP + (char)((int)data[i + 19]);
+            for (int i = 0; i < 4; i++) portServ = portServ + (char)((int)data[i + 31]);
+        }
     }
 
     private String get_tmp (int val) {

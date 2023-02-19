@@ -1,5 +1,9 @@
 package com.ez.data_receive;
 
+import android.util.Log;
+
+import com.ez.smarttermo.DataForSend;
+
 import java.io.Serializable;
 
 public class ReadyDataForScreen implements Serializable {
@@ -30,6 +34,9 @@ public class ReadyDataForScreen implements Serializable {
         private final String debug;
         private String infoFromserver;
         private String infoFromserverADC;
+        private String serverIP;
+        private String portServ;
+        private String macADR;
         private boolean flagBoilerON;
         private boolean flagPowOk;
         private boolean flagInversOUTOk;
@@ -39,6 +46,7 @@ public class ReadyDataForScreen implements Serializable {
         private boolean flagNOTHeat;
         private final int timeDaySec;
         private final int timeNightSec;
+        private final int boilerTmpGistINT;
 
         public ReadyDataForScreen (TelemetrySmartTermo data) {
             int tmp;
@@ -145,6 +153,23 @@ public class ReadyDataForScreen implements Serializable {
             timeDaySec = data.get_timeDaySec();
             timeNightSec = data.get_timeNightSec();
 
+            boilerTmpGistINT = Integer.parseInt (data.get_boilerTmpGist());
+            if (data.get_command() == DataForSend.SET_LINK) {
+                try {
+                    serverIP = data.get_serverIP();
+                    if (serverIP.length() == 12) {
+                        serverIP = "" + serverIP.charAt(0) + serverIP.charAt(1) + serverIP.charAt(2) + "." +
+                                serverIP.charAt(3) + serverIP.charAt(4) + serverIP.charAt(5) + "." +
+                                serverIP.charAt(6) + serverIP.charAt(7) + serverIP.charAt(8) + "." +
+                                serverIP.charAt(9) + serverIP.charAt(10) + serverIP.charAt(11);
+                    }
+                    portServ = data.get_portServ();
+                } catch (Exception e) {
+                    Log.d("tag", "ReadyDataForScreen Exception data.get_serverIP()");
+                }
+            }
+            macADR =  data.get_macADR();
+            macADR =  macADR.substring(0,macADR.length() - 1);
         }
 
         public String get_airHomeTmp () { return airHomeTmp; }
@@ -171,6 +196,9 @@ public class ReadyDataForScreen implements Serializable {
         public String get_chargeAccum () { return chargeAccum; }
         public String get_setAirTmp () { return setAirTmp; }
         public String get_debug () { return debug; }
+        public String get_serverIP () { return serverIP; }
+        public String get_portServ () { return portServ; }
+        public String get_macADR () { return macADR; }
         public String get_statusSocket () { return statusSocket; }
         public boolean get_flagBoilerON () { return flagBoilerON; }
         public boolean get_flagPowOk () { return flagPowOk; }
@@ -184,6 +212,7 @@ public class ReadyDataForScreen implements Serializable {
         public int get_timeNightSec () { return timeNightSec; }
         public int get_timeDaytSec () { return timeDaySec; }
         public String get_infoFromserverADC () { return infoFromserverADC; }
+        public int get_boilerTmpGistINT () { return boilerTmpGistINT; }
 
         String get_time (Integer val) {
             String time;
@@ -218,5 +247,7 @@ public class ReadyDataForScreen implements Serializable {
             time = "" + prefix_hour + hour + ":" + prefix_min + min + ":" + prefix_sec + sec;
 
             return time;
-    }
+        }
+
+
 }

@@ -1247,7 +1247,6 @@ void func_get_data_TCP (uint16_t start_b) {
 			uint8_t kk;
 			int crc_send, crc_check;
       uint8_t dim_crc_mail[144];
-	
 			TIM_Cmd (TIM2, DISABLE);
       PARAM.count_COMAND_ = dim_for_SMART[3+64];
       PARAM.COMAND_ = dim_for_SMART[4+64];
@@ -1269,8 +1268,6 @@ void func_get_data_TCP (uint16_t start_b) {
         crc_send = (uint16_t)dim_for_SMART[159] | (((uint16_t)dim_for_SMART[160])<<8);
         crc_check = (0x007f & crc_check) | ((0x007f & (crc_check>>8))<<8);
       }
-			
-			
 			if (PARAM.COMAND_ != cmd_save_kf && PARAM.COMAND_ != set_link && PARAM.COMAND_ != config_mail) {
 				PARAM.time_NIGHT_ = (int)dim_for_SMART[i]; i++;
 				PARAM.time_NIGHT_ = (((int)dim_for_SMART[i])<<8) | PARAM.time_NIGHT_; i++;
@@ -1320,7 +1317,17 @@ void func_get_data_TCP (uint16_t start_b) {
 //			for(i = 0; i<50; i++){ data_OUT_COM[i] = dim_for_SMART[i];}	
 			buf_data[56] = (uint8_t)(crc_check & 0xff); buf_data[57] = (uint8_t)((crc_check>>8) & 0xff); buf_data[58] = (uint8_t)((crc_check>>16) & 0xff); buf_data[59] = (uint8_t)((crc_check>>24) & 0xff);
 			buf_data[60] = dim_for_SMART[124]; buf_data[61] = dim_for_SMART[125]; buf_data[62] = dim_for_SMART[126]; buf_data[63] = dim_for_SMART[127];
-			TIM_Cmd (TIM2, ENABLE);
+/*			
+			DelaymS (80);
+			send_str_USB ("crc_check: ", buf_data[56]);
+			DelaymS (80);
+			send_str_USB ("crc_check: ", buf_data[57]);
+			DelaymS (80);
+			send_str_USB ("crc_check: ", buf_data[58]);
+			DelaymS (80);
+			send_str_USB ("crc_check: ", buf_data[59]);
+			DelaymS (80);*/
+ 	    TIM_Cmd (TIM2, ENABLE);
 }
 
 
