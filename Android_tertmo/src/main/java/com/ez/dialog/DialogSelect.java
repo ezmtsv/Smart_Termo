@@ -119,12 +119,12 @@ public class DialogSelect extends DialogFragment {
                 OnClickListener butyes = new OnClickListener() {
                     public void onClick(View v) {
                         try {
-                            if (settmp_txt.getHint().equals("24˚C")) {
+                            if (settmp_txt.getText().length() == 0) {      //  && settmp_txt.getHint().equals("24˚C")
                                 obj.cmd = DataForSend.SET_TMP;
                                 obj.setAirTmp = 24;
                             } else {
                                 final int send_tmp = Integer.parseInt(settmp_txt.getText().toString());
-                                if (settmp_txt.getText().length() != 0 && send_tmp != obj.setAirTmp) {
+                                if (send_tmp != obj.setAirTmp) {        // settmp_txt.getText().length() != 0
                                     if (send_tmp > 0 && send_tmp < 50) {
                                         obj.cmd = DataForSend.SET_TMP;
                                         obj.setAirTmp = send_tmp;

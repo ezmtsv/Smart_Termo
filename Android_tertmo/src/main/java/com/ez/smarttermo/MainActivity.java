@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
+import android.os.SystemClock;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
@@ -37,6 +38,8 @@ import com.ez.dialog.VisualCommand;
 import com.ez.screen.DisplayParam;
 
 import java.util.HashMap;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnTouchListener,
@@ -96,9 +99,12 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     private final int IDLOADERGET = 1;
 //    private final int IDLOADERSEND = 2;
     private byte cnt = 0;
+    private byte prevcnt = 0;
     private int waitAnswercom = 0;
     private int tempScreen = 0;
     private boolean statusSock;
+    Timer tmr;
+    TimerTask timerTask;
 
     String tag = "tag";
     void log (String s) { Log.d(tag, s); }
@@ -164,13 +170,18 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                             eY = (int) event.getY();
                             touchFlag = 2;
                             if (item_img.getId() == R.id.progress_img) {
-                                if (visible_set_TMP == 2) showtmp.sendEmptyMessage((eX/d.step_boiler) + 5);
-                                if (visible_set_TMP == 1) showtmp.sendEmptyMessage((eX/d.step) + 5);
-                                change_tmp = true;
+                                if (visible_set_TMP == 2) {
+                                    change_tmp = true;
+                                    showtmp.sendEmptyMessage((eX / d.step_boiler) + 5);
+                                }
+                                if (visible_set_TMP == 1) {
+                                    change_tmp = true;
+                                    showtmp.sendEmptyMessage((eX/d.step) + 5);
+                                }
                             }
                             break;
                         case MotionEvent.ACTION_UP:
-
+                            touchFlag = 0;
                             switch (item_img.getId()) {
                                 case R.id.fon_air:
                                     fon_air.setImageDrawable(d.createLayerDrawable(R.drawable.fon_air, (float) 0.45, (float) 0.25));
@@ -193,9 +204,18 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                                     lay_stat.setVisibility(View.VISIBLE);
                                     but_stat_img.setImageDrawable(d.createLayerDrawable(R.drawable.but_stat, (float) 0.73, (float) 0.05));
                                     break;
+                                case R.id.progress_img:
+                                    if (visible_set_TMP == 2) {
+                                        change_tmp = true;
+                                        showtmp.sendEmptyMessage((eX / d.step_boiler) + 5);
+                                    }
+                                    if (visible_set_TMP == 1) {
+                                        change_tmp = true;
+                                        showtmp.sendEmptyMessage((eX/d.step) + 5);
+                                    }
+                                    log ("sendCommand progress_img, visible_set_TMP = " + visible_set_TMP);
+                                    break;
                             }
-                            touchFlag = 0;
-                            Log.d(tag, "onTouch UP_" + touchFlag);
                             flag_toch_menu = false;
                             break;
                     }
@@ -207,6 +227,10 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
     }
 ///////////END onCREATE//////////
+    void startLoader () {
+        getSupportLoaderManager().restartLoader(IDLOADERGET, null,  this);
+    }
+
     @Override
     public Loader<ReadyDataForScreen> onCreateLoader(int id, Bundle args) {
 //        log ("MainActivity onCreateLoader");
@@ -284,11 +308,11 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                 touchFlag = 1;
                 item_img = v;
                 if (item_img.getId() == R.id.butback_stat_img) handlbuckstat();
-                Log.d(tag, "onTouch DOWN_" + touchFlag);
+                Log.d(tag, "onTouch _DOWN_ " + touchFlag);
                 break;
             case MotionEvent.ACTION_UP:
                 touchFlag = 3;
-                Log.d(tag, "onTouch UP_" + touchFlag);
+                Log.d(tag, "onTouch _UP_ " + touchFlag);
                 break;
             default:
                 break;
@@ -454,10 +478,27 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         objTelemetry.cmd = DataForSend.REQ_DATA;
         objTelemetry.cnt_repeat = 0;
         objTelemetry.count_cmd = 125;
+
+        timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                if (prevcnt == cnt) {
+                    if (loaderReceive != null) getSupportLoaderManager().destroyLoader(IDLOADERGET);
+                    log ("MainActivity timerTask prevcnt == cnt" + cnt);
+                    startLoader ();
+                }
+                else {
+//                    log ("MainActivity timerTask cnt = " + cnt + ", prevcnt = " + prevcnt);
+                    prevcnt = cnt;
+                }
+            }
+        };
+
+        tmr = new Timer();
+        tmr.schedule (timerTask, 4000 , 4000);
     }
 
     void show_bar_set_tmp (int set_visible) {
-        touchFlag = 0;
         switch (set_visible) {
             case 2:                 // включение бара настройки темп. воздуха
                 lay_tmpset.setVisibility(View.VISIBLE);
@@ -609,6 +650,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         @Override
         public void handleMessage(Message msg) {
         int temp = msg.what;
+        log ("MainActivity showtmp change_tmp " + change_tmp + ", touchFlag " + touchFlag + ", waitAnswercom " + waitAnswercom);
         DisplayParam.BarShowTmp bar = d.showtmp(visible_set_TMP, eY, poseY, temp);
         if (visible_set_TMP == 2) {
             if (change_tmp && touchFlag == 0 && waitAnswercom == 0) {
@@ -631,7 +673,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         tempScreen = temp;
         tmpset.setText (bar.get_txt());
         prg_img.setImageAlpha(bar.get_alfa());
-
         }
     };
 
@@ -706,7 +747,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                 objTelemetry.flagNOTHeatCUR = data.get_flagNOTHeat();
 //            log ("objTelemetry.flagNOTHeatCUR " + objTelemetry.flagNOTHeatCUR);
 //            log ("cmdCUR " + objTelemetry.cmdCUR + " cmd " +objTelemetry.cmd);
-//            log (" count_cmdCUR " + objTelemetry.count_cmdCUR + " count_cmd " + objTelemetry.count_cmd);
+            log (" count_cmdCUR " + objTelemetry.count_cmdCUR + " count_cmd " + objTelemetry.count_cmd);
             objTelemetry.flagInversOUTOkCUR = data.get_flagInversOUTOk();
             objTelemetry.flagBoilerONCUR = data.get_flagBoilerON();
             objTelemetry.timeNightSecCUR = data.get_timeNightSec();
