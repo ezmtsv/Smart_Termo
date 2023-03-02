@@ -38,6 +38,7 @@ import com.ez.dialog.VisualCommand;
 import com.ez.screen.DisplayParam;
 
 import java.util.HashMap;
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -477,8 +478,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         statusSock = false;
         objTelemetry.cmd = DataForSend.REQ_DATA;
         objTelemetry.cnt_repeat = 0;
-        objTelemetry.count_cmd = 125;
-
+        final Random random = new Random();
+        objTelemetry.count_cmd = random.nextInt(126);
         timerTask = new TimerTask() {
             @Override
             public void run() {
@@ -824,14 +825,16 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         log ("MainAcnivity onCompleteANSW " + answ);
         waitAnswercom = 0;
         if (objTelemetry.cmd == DataForSend.SET_LINK && objTelemetry.ServerIPCUR.length() == 15) {
-            dev = dataSaves.get_devices();
-            dev.put(objTelemetry.ServerIPCUR, new String[]{"Газ", "Электро"});
-            dataSaves.put_devices(dev);
-            rwData.saveData (dataSaves);
+            try {
+                dev = dataSaves.get_devices();
+                dev.put(objTelemetry.ServerIPCUR, new String[]{"Газ", "Электро"});
+                dataSaves.put_devices(dev);
+                rwData.saveData(dataSaves);
 
-            dataSaves.set_curDevice(objTelemetry.ServerIPCUR);
-            rwData.saveData (dataSaves);
-            objTelemetry.ServerIP = objTelemetry.ServerIPCUR;
+                dataSaves.set_curDevice(objTelemetry.ServerIPCUR);
+                rwData.saveData(dataSaves);
+                objTelemetry.ServerIP = objTelemetry.ServerIPCUR;
+            } catch (Exception e) { log ("MainActivity Exception save New Net WIFI"); }
         }
        if (objTelemetry.cmd == DataForSend.SET_COEF) flag_calibrovka = false;
         objTelemetry.cmd = DataForSend.REQ_DATA;
