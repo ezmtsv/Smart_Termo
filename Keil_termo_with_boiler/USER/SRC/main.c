@@ -55,6 +55,7 @@ bool flag_answer_TCP = false;
 bool flag_send_MAIL = false;
 bool TIM2_period_edit = false;
 bool flag_restartMC = false;
+bool flag_st_heat_system = false;
 
 extern uint8_t status_heat_var;
 extern uint8_t status_power220_var;
@@ -550,10 +551,11 @@ int main (void) {
     } else {
 //      if ((set_tempBoiler + set_gisttempBoiler) < out_for_SMART.tmp_Boiler) { 
       if ((out_for_SMART.tmp_Boiler-set_tempBoiler)>set_gisttempBoiler) {  
-        RELE3_OFF;
+        if (flag_st_heat_system) RELE3_OFF;																					// если идет нагрев системы отопления переключаем насос
+				else func_heat (out_for_SMART.status_mode_GAS, flag_COOL, false);						// иначе выключить нагрев и оставить циркуляцию воды через бойлер
         RED_DISP_OFF;
         GREEN_DISP_ON;
-        func_heat (out_for_SMART.status_mode_GAS, flag_COOL, false);								 // выключить нагрев
+        
         flag_st_heat_boiler = false;                                                 // нагрев воды выключился
       }    
     }
@@ -566,13 +568,17 @@ int main (void) {
   if (!flag_st_heat_boiler) {                                                       // если в данный момент не идет нагрев воды 
     delta_TMP = ((int16_t)out_for_SMART.set_TMP)*100 - out_for_SMART.tmp_AIR;		    // находим разницу между реальной температурой возд. и установленной
     if (!flag_alarm_W && !flag_alarm_HeaterOFF) {																														// если темп. воды не превышает критическую 95гр.цельс.
-      if ((uint16_t)out_for_SMART.set_TMP*100 > out_for_SMART.tmp_AIR)
+      if ((uint16_t)out_for_SMART.set_TMP*100 > out_for_SMART.tmp_AIR) {
         func_heat (out_for_SMART.status_mode_GAS, flag_COOL, true);								  // включить нагрев
+				flag_st_heat_system = true;
+			}
       else {
-        if (((uint16_t)out_for_SMART.set_TMP*100 + out_for_SMART.gisteresis_TMP) < out_for_SMART.tmp_AIR)
+        if (((uint16_t)out_for_SMART.set_TMP*100 + out_for_SMART.gisteresis_TMP) < out_for_SMART.tmp_AIR) {
           func_heat (out_for_SMART.status_mode_GAS, flag_COOL, false);							// выключить нагрев
+					flag_st_heat_system = false;
+				}
       }
-      } else { 																																				// температура воды выше критической или принудительное аварийное откл., выключить нагрев
+    } else { 																																				// температура воды выше критической или принудительное аварийное откл., выключить нагрев
         if (!flag_alarm_HeaterOFF) get_strBUF_USB ("ALARM! Overheating water!_"); 
         else get_strBUF_USB ("ALARM Heater OFF enabled!_");
       func_heat (out_for_SMART.status_mode_GAS, flag_COOL, false); 
@@ -1247,6 +1253,7 @@ void func_get_data_TCP (uint16_t start_b) {
 			uint8_t kk;
 			int crc_send, crc_check;
       uint8_t dim_crc_mail[144];
+	
 			TIM_Cmd (TIM2, DISABLE);
       PARAM.count_COMAND_ = dim_for_SMART[3+64];
       PARAM.COMAND_ = dim_for_SMART[4+64];
@@ -1268,6 +1275,8 @@ void func_get_data_TCP (uint16_t start_b) {
         crc_send = (uint16_t)dim_for_SMART[159] | (((uint16_t)dim_for_SMART[160])<<8);
         crc_check = (0x007f & crc_check) | ((0x007f & (crc_check>>8))<<8);
       }
+			
+			
 			if (PARAM.COMAND_ != cmd_save_kf && PARAM.COMAND_ != set_link && PARAM.COMAND_ != config_mail) {
 				PARAM.time_NIGHT_ = (int)dim_for_SMART[i]; i++;
 				PARAM.time_NIGHT_ = (((int)dim_for_SMART[i])<<8) | PARAM.time_NIGHT_; i++;
@@ -1317,17 +1326,7 @@ void func_get_data_TCP (uint16_t start_b) {
 //			for(i = 0; i<50; i++){ data_OUT_COM[i] = dim_for_SMART[i];}	
 			buf_data[56] = (uint8_t)(crc_check & 0xff); buf_data[57] = (uint8_t)((crc_check>>8) & 0xff); buf_data[58] = (uint8_t)((crc_check>>16) & 0xff); buf_data[59] = (uint8_t)((crc_check>>24) & 0xff);
 			buf_data[60] = dim_for_SMART[124]; buf_data[61] = dim_for_SMART[125]; buf_data[62] = dim_for_SMART[126]; buf_data[63] = dim_for_SMART[127];
-/*			
-			DelaymS (80);
-			send_str_USB ("crc_check: ", buf_data[56]);
-			DelaymS (80);
-			send_str_USB ("crc_check: ", buf_data[57]);
-			DelaymS (80);
-			send_str_USB ("crc_check: ", buf_data[58]);
-			DelaymS (80);
-			send_str_USB ("crc_check: ", buf_data[59]);
-			DelaymS (80);*/
- 	    TIM_Cmd (TIM2, ENABLE);
+			TIM_Cmd (TIM2, ENABLE);
 }
 
 
