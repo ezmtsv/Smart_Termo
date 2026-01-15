@@ -1420,3 +1420,18 @@ void ready_rep(void) {
 
 }
 
+void check_ESP(void) {
+	uint8_t i = 0;
+	while (!wait_OK()) {
+		SerialPutString ("AT"); SerialPutString ("\r\n"); 
+		DelaymS (100); i++; 
+		if (i> 20) {		//
+			get_strBUF_USB ("func check_ESP, wait answer for command OK..."); 
+			reset_ESP8266(); 
+			init_WIFI_server();
+			DelaymS (1000);
+			break;					
+		}
+	}
+//	if (i < 20) send_str_USB ("check_ESP OK, i = ", i);
+}

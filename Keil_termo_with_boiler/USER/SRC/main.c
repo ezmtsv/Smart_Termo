@@ -21,7 +21,7 @@ uint16_t count_alarm_letter = 0;
 uint16_t count_alarm_letterW = 0;
 uint8_t data_from_soft[260];
 
-uint16_t set_tempBoiler = 3000;         // 30.00 * 100
+uint16_t set_tempBoiler = 3900;         // 39.00 * 100
 uint16_t set_gisttempBoiler = 400;      // 04.00 * 100
 uint8_t flag_work_boiler = 0;           // 1 - работа с бойлером, 0 - только отопление
 bool flag_st_heat_boiler = false;       // false - при работе с бойлером нагрев горячей воды выкл., true - нагрев горячей воды вкл.
@@ -187,7 +187,7 @@ void func_synchro (void);
 void func_heat (uint8_t GAS, bool flg_cool, bool heat);		
 void ready_str_for_alarm (char* txt, char* sub);		
 void load_DEF_setESP (void);
-
+void func_air_control (void);
 
 
 void Delay (int nTime) {
@@ -498,6 +498,7 @@ int main (void) {
 		}
 //===================================
 /*    
+		//variant 1
     if (set_tempBoiler > out_for_SMART.tmp_B && flag_work_boiler != 0) {  // переключение на бойлер (при старте модуля бойлер по умолчанию всегда выключен - flag_work_boiler = 0)
       RELE3_ON;
       GREEN_DISP_OFF;
@@ -536,6 +537,8 @@ int main (void) {
       }
     }
 */
+	//variant 2
+	/*
   if (flag_work_boiler) {
     if (set_tempBoiler > out_for_SMART.tmp_Boiler) {                                                          // переключение на бойлер (при старте модуля бойлер по умолчанию всегда выключен - flag_work_boiler = 0)  
       RELE3_ON;
@@ -584,6 +587,50 @@ int main (void) {
       func_heat (out_for_SMART.status_mode_GAS, flag_COOL, false); 
     }  
   }
+	*/
+	//variant 3
+	if (!flag_alarm_W && !flag_alarm_HeaterOFF) {
+		if (flag_work_boiler) {
+			uint16_t temp_boiler_off = set_tempBoiler + set_gisttempBoiler;
+			if (set_tempBoiler > out_for_SMART.tmp_Boiler) {
+				func_heat (out_for_SMART.status_mode_GAS, flag_COOL, true);																// включить нагрев
+				RELE3_ON;																																									// включаем циркуляционный насос бойлера
+				GREEN_DISP_OFF;
+				RED_DISP_ON;
+				flag_st_heat_boiler = true;  
+			} else {
+				if (flag_st_heat_boiler) {
+					if (out_for_SMART.tmp_Boiler < temp_boiler_off) {
+						goto CNTRL_TERM;
+					} 
+				}
+				if (flag_st_heat_system) {
+					RELE3_OFF;																																							// включаем циркуляционный насос отопления
+				}
+				else {
+					func_heat (out_for_SMART.status_mode_GAS, flag_COOL, false);							              // выключить нагрев
+				}
+//				get_strBUF_USB ("Temp Boiler > set_tempBoiler!");
+				RED_DISP_OFF;
+				GREEN_DISP_ON;
+				flag_st_heat_boiler = false;
+				func_air_control();
+			}
+		} else {
+			RED_DISP_OFF;
+			GREEN_DISP_OFF;  
+			flag_st_heat_boiler = false;
+			RELE3_OFF;																																									// включаем циркуляционный насос отопления
+			func_air_control();
+		}
+	} else {
+		if (!flag_alarm_HeaterOFF) get_strBUF_USB ("ALARM Boiler! Overheating water!");               // температура воды выше критической  или принудительное аварийное откл., выключить нагрев
+		else get_strBUF_USB ("ALARM Heater OFF enabled!");
+		func_heat (out_for_SMART.status_mode_GAS, flag_COOL, false);								            			// выключить нагрев	
+	}
+	
+CNTRL_TERM:
+	check_ESP();
 //===================================      
 /////////////////////////работа с СОМ портом //////////////////		
 //////////////////////////////ESP8266	    
@@ -692,11 +739,11 @@ int main (void) {
 //					get_strBUF_USB(mail_pass64);
 //					get_strBUF_USB(mail_from);
 ///debug
-					get_strBUF_USB ("not link with device");
+//					get_strBUF_USB ("not link with device");
           //send_str_USB ("mode_disp ", mode_disp);
-					DelaymS (200);
+//					DelaymS (200);
           //send_str_USB ("set_mode ", set_mode);
-          send_str_USB ("charge_ Accum ", (uint8_t)(cur_charge*10));
+//          send_str_USB ("charge_ Accum ", (uint8_t)(cur_charge*10));
 ///          
 					DelaymS (1000); //count_try_sendWIFI++; 
 				}
@@ -1394,7 +1441,18 @@ void func_synchro (void) {
 					}				
 }
 
-
+void func_air_control (void) {
+	uint16_t temp_air_off = (uint16_t)out_for_SMART.set_TMP*100 + out_for_SMART.gisteresis_TMP;
+	if ((uint16_t)out_for_SMART.set_TMP*100 > out_for_SMART.tmp_AIR) {
+		func_heat (out_for_SMART.status_mode_GAS, flag_COOL, true);								                // включить нагрев
+		flag_st_heat_system = true;
+	} else {
+		if (out_for_SMART.tmp_AIR > temp_air_off) {
+			func_heat (out_for_SMART.status_mode_GAS, flag_COOL, false);							                // выключить нагрев
+      flag_st_heat_system = false;
+		}
+	}
+}
 
 #ifdef  USE_FULL_ASSERT
 

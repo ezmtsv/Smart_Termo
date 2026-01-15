@@ -274,6 +274,9 @@ Section Cross References
     main.o(i.Delay) refers to dmul.o(.text) for __aeabi_dmul
     main.o(i.Delay) refers to dfixi.o(.text) for __aeabi_d2iz
     main.o(i.DelaymS) refers to main.o(i.DelayuS) for DelayuS
+    main.o(i.func_air_control) refers to main.o(i.func_heat) for func_heat
+    main.o(i.func_air_control) refers to func.o(.bss) for out_for_SMART
+    main.o(i.func_air_control) refers to main.o(.data) for flag_COOL
     main.o(i.func_get_data_TCP) refers to stm32f0xx_tim.o(i.TIM_Cmd) for TIM_Cmd
     main.o(i.func_get_data_TCP) refers to main.o(i.CalculateCRC) for CalculateCRC
     main.o(i.func_get_data_TCP) refers to main.o(i.DelaymS) for DelaymS
@@ -339,7 +342,9 @@ Section Cross References
     main.o(i.main) refers to wifi_esp8266.o(.bss) for rep_day
     main.o(i.main) refers to main.o(i.load_DEF_setESP) for load_DEF_setESP
     main.o(i.main) refers to main.o(i.func_heat) for func_heat
+    main.o(i.main) refers to main.o(i.func_air_control) for func_air_control
     main.o(i.main) refers to wifi_esp8266.o(i.getstr_BUF_USB) for getstr_BUF_USB
+    main.o(i.main) refers to wifi_esp8266.o(i.check_ESP) for check_ESP
     main.o(i.main) refers to usbd_req.o(i.__ARM_common_switch8) for __ARM_common_switch8
     main.o(i.main) refers to wifi_esp8266.o(i.size_get_bytes_from_com) for size_get_bytes_from_com
     main.o(i.main) refers to main.o(i.func_get_data_TCP) for func_get_data_TCP
@@ -349,13 +354,11 @@ Section Cross References
     main.o(i.main) refers to usart_stm.o(i.SerialPutChar) for SerialPutChar
     main.o(i.main) refers to func.o(i.work_ADC_STM) for work_ADC_STM
     main.o(i.main) refers to func.o(i.real_temp) for real_temp
-    main.o(i.main) refers to func.o(.data) for flag_alarm_HeaterOFF
-    main.o(i.main) refers to usart_stm.o(.data) for len_packet_COM
     main.o(i.main) refers to func.o(i.init_out_for_SMART) for init_out_for_SMART
     main.o(i.main) refers to stm32f0xx_it.o(i.data_transmit_clientWIFI) for data_transmit_clientWIFI
     main.o(i.main) refers to wifi_esp8266.o(i.ready_send_dataWIFI) for ready_send_dataWIFI
-    main.o(i.main) refers to dmul.o(.text) for __aeabi_dmul
-    main.o(i.main) refers to dfixui.o(.text) for __aeabi_d2uiz
+    main.o(i.main) refers to func.o(.data) for flag_alarm_HeaterOFF
+    main.o(i.main) refers to usart_stm.o(.data) for len_packet_COM
     main.o(i.main) refers to main.o(i.out_echo_from_ESP) for out_echo_from_ESP
     main.o(i.main) refers to stm32f0xx_it.o(i.data_answer) for data_answer
     main.o(i.main) refers to main.o(i.led_answer) for led_answer
@@ -363,10 +366,11 @@ Section Cross References
     main.o(i.main) refers to dflti.o(.text) for __aeabi_ui2d
     main.o(i.main) refers to daddsub.o(.text) for __aeabi_dadd
     main.o(i.main) refers to ddiv.o(.text) for __aeabi_ddiv
+    main.o(i.main) refers to dmul.o(.text) for __aeabi_dmul
     main.o(i.main) refers to main.o(i.ready_str_for_alarm) for ready_str_for_alarm
     main.o(i.main) refers to drlef.o(x$fpl$drleqf) for __aeabi_cdrcmple
-    main.o(i.main) refers to main.o(.conststring) for .conststring
     main.o(i.main) refers to dlef.o(x$fpl$dleqf) for __aeabi_cdcmple
+    main.o(i.main) refers to main.o(.conststring) for .conststring
     main.o(i.out_echo_from_ESP) refers to stm32f0xx_it.o(i.data_answer) for data_answer
     main.o(i.out_echo_from_ESP) refers to main.o(i.DelaymS) for DelaymS
     main.o(i.out_echo_from_ESP) refers to aeabi_sdiv.o(.text) for __aeabi_uidivmod
@@ -666,6 +670,12 @@ Section Cross References
     user_init.o(i.iwdg_init) refers to stm32f0xx_iwdg.o(i.IWDG_SetReload) for IWDG_SetReload
     user_init.o(i.iwdg_init) refers to stm32f0xx_iwdg.o(i.IWDG_ReloadCounter) for IWDG_ReloadCounter
     user_init.o(i.iwdg_init) refers to stm32f0xx_iwdg.o(i.IWDG_Enable) for IWDG_Enable
+    wifi_esp8266.o(i.check_ESP) refers to usart_stm.o(i.Serial_PutString) for Serial_PutString
+    wifi_esp8266.o(i.check_ESP) refers to main.o(i.DelaymS) for DelaymS
+    wifi_esp8266.o(i.check_ESP) refers to wifi_esp8266.o(i.getstr_BUF_USB) for getstr_BUF_USB
+    wifi_esp8266.o(i.check_ESP) refers to main.o(i.reset_ESP8266) for reset_ESP8266
+    wifi_esp8266.o(i.check_ESP) refers to wifi_esp8266.o(i.init_WIFI_server) for init_WIFI_server
+    wifi_esp8266.o(i.check_ESP) refers to wifi_esp8266.o(i.wait_OK) for wait_OK
     wifi_esp8266.o(i.check_exist_CON) refers to wifi_esp8266.o(.bss) for exist_connect
     wifi_esp8266.o(i.func_acs2) refers to drlef.o(x$fpl$drleqf) for __aeabi_cdrcmple
     wifi_esp8266.o(i.func_acs2) refers to dlef.o(x$fpl$dleqf) for __aeabi_cdcmple
@@ -1634,63 +1644,63 @@ Image Symbol Table
 
     ../clib/../cmprslib/zerorunl2.c          0x00000000   Number         0  __dczerorl2.o ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit1.o ABSOLUTE
-    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit2.o ABSOLUTE
-    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit3.o ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardshut.o ABSOLUTE
+    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit3.o ABSOLUTE
+    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit2.o ABSOLUTE
     ../clib/angel/handlers.s                 0x00000000   Number         0  __scatter_zi.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit2.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry4.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry2.o ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit.o ABSOLUTE
-    ../clib/angel/rt.s                       0x00000000   Number         0  aeabi_idiv0.o ABSOLUTE
     ../clib/angel/rt.s                       0x00000000   Number         0  rt_raise.o ABSOLUTE
     ../clib/angel/rt.s                       0x00000000   Number         0  rt_div0.o ABSOLUTE
-    ../clib/angel/rt.s                       0x00000000   Number         0  aeabi_idiv0_sigfpe.o ABSOLUTE
-    ../clib/angel/rt.s                       0x00000000   Number         0  rt_errno_addr_intlibspace.o ABSOLUTE
     ../clib/angel/rt.s                       0x00000000   Number         0  rt_errno_addr.o ABSOLUTE
+    ../clib/angel/rt.s                       0x00000000   Number         0  rt_errno_addr_intlibspace.o ABSOLUTE
+    ../clib/angel/rt.s                       0x00000000   Number         0  aeabi_idiv0_sigfpe.o ABSOLUTE
+    ../clib/angel/rt.s                       0x00000000   Number         0  aeabi_idiv0.o ABSOLUTE
     ../clib/angel/scatterp.s                 0x00000000   Number         0  __scatter.o ABSOLUTE
     ../clib/angel/startup.s                  0x00000000   Number         0  __main.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  use_no_semi.o ABSOLUTE
-    ../clib/angel/sys.s                      0x00000000   Number         0  libspace.o ABSOLUTE
-    ../clib/angel/sys.s                      0x00000000   Number         0  tempstk.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  sys_stackheap_outer.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  indicate_semi.o ABSOLUTE
-    ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_command.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  libspace.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  tempstk.o ABSOLUTE
     ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_exit.o ABSOLUTE
     ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_wrch.o ABSOLUTE
+    ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_command.o ABSOLUTE
+    ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  no_argv.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  _get_argv_nomalloc.o ABSOLUTE
-    ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
     ../clib/division.s                       0x00000000   Number         0  aeabi_sdiv_div0.o ABSOLUTE
     ../clib/division.s                       0x00000000   Number         0  aeabi_sdiv.o ABSOLUTE
     ../clib/fenv.c                           0x00000000   Number         0  _rserrno.o ABSOLUTE
     ../clib/heapalloc.c                      0x00000000   Number         0  hrguard.o ABSOLUTE
     ../clib/heapaux.c                        0x00000000   Number         0  heapauxi.o ABSOLUTE
-    ../clib/libinit.s                        0x00000000   Number         0  libshutdown.o ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  libinit.o ABSOLUTE
-    ../clib/libinit.s                        0x00000000   Number         0  libshutdown2.o ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  libinit2.o ABSOLUTE
+    ../clib/libinit.s                        0x00000000   Number         0  libshutdown2.o ABSOLUTE
+    ../clib/libinit.s                        0x00000000   Number         0  libshutdown.o ABSOLUTE
     ../clib/longlong.c                       0x00000000   Number         0  llmul.o ABSOLUTE
-    ../clib/memcpset.c                       0x00000000   Number         0  rt_memcpy.o ABSOLUTE
     ../clib/memcpset.c                       0x00000000   Number         0  rt_memclr.o ABSOLUTE
     ../clib/memcpset.c                       0x00000000   Number         0  rt_memcpy.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_cppl_inner.o ABSOLUTE
+    ../clib/memcpset.c                       0x00000000   Number         0  rt_memcpy.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_pvfn_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_stak_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_formal.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_outer.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_rtred_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_abrt_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_general.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  __raise.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_pvfn_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_stak_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_exit.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_formal.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_outer.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_formal.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_exit.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_other.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_segv_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_cppl_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_general.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  __raise.o ABSOLUTE
     ../clib/signal.s                         0x00000000   Number         0  defsig.o ABSOLUTE
     ../clib/stdlib.c                         0x00000000   Number         0  exit.o ABSOLUTE
     ../clib/string.c                         0x00000000   Number         0  strlen.o ABSOLUTE
@@ -1718,8 +1728,8 @@ Image Symbol Table
     ../mathlib/pow.c                         0x00000000   Number         0  pow_x.o ABSOLUTE
     ../mathlib/pow.c                         0x00000000   Number         0  pow.o ABSOLUTE
     ../mathlib/qnan.c                        0x00000000   Number         0  qnan.o ABSOLUTE
-    ../mathlib/sqrt.c                        0x00000000   Number         0  sqrt_x.o ABSOLUTE
     ../mathlib/sqrt.c                        0x00000000   Number         0  sqrt.o ABSOLUTE
+    ../mathlib/sqrt.c                        0x00000000   Number         0  sqrt_x.o ABSOLUTE
     ARM_ST\SRC\startup_stm32f072.s           0x00000000   Number         0  startup_stm32f072.o ABSOLUTE
     Periph_drv\SRC\stm32f0xx_adc.c           0x00000000   Number         0  stm32f0xx_adc.o ABSOLUTE
     Periph_drv\SRC\stm32f0xx_can.c           0x00000000   Number         0  stm32f0xx_can.o ABSOLUTE
@@ -1878,8 +1888,8 @@ Image Symbol Table
     .text                                    0x0800513a   Section        0  retnan.o(.text)
     .text                                    0x08005198   Section        0  sys_exit.o(.text)
     .text                                    0x080051a4   Section        2  use_no_semi.o(.text)
-    .text                                    0x080051a6   Section        0  indicate_semi.o(.text)
     .text                                    0x080051a6   Section        0  __dczerorl2.o(.text)
+    .text                                    0x080051a6   Section        0  indicate_semi.o(.text)
     i.ADC_ChannelConfig                      0x080051fc   Section        0  stm32f0xx_adc.o(i.ADC_ChannelConfig)
     i.ADC_Cmd                                0x08005214   Section        0  stm32f0xx_adc.o(i.ADC_Cmd)
     i.ADC_GetCalibrationFactor               0x0800522c   Section        0  stm32f0xx_adc.o(i.ADC_GetCalibrationFactor)
@@ -2081,90 +2091,92 @@ Image Symbol Table
     i.__mathlib_dbl_overflow                 0x08008550   Section        0  dunder.o(i.__mathlib_dbl_overflow)
     i.__mathlib_dbl_underflow                0x08008564   Section        0  dunder.o(i.__mathlib_dbl_underflow)
     i.acs2                                   0x08008578   Section        0  usart_stm.o(i.acs2)
-    i.check_exist_CON                        0x080085b4   Section        0  wifi_esp8266.o(i.check_exist_CON)
-    i.comport_Init                           0x080085d0   Section        0  usart_stm.o(i.comport_Init)
-    i.data_answer                            0x0800864c   Section        0  stm32f0xx_it.o(i.data_answer)
-    i.data_transmit_clientWIFI               0x08008698   Section        0  stm32f0xx_it.o(i.data_transmit_clientWIFI)
-    i.disp_scrsave                           0x080087f8   Section        0  tm1637.o(i.disp_scrsave)
-    i.disp_set_mode                          0x08008890   Section        0  tm1637.o(i.disp_set_mode)
-    i.filter_median                          0x08008984   Section        0  func.o(i.filter_median)
-    i.flash_read                             0x080089d8   Section        0  main.o(i.flash_read)
-    i.func_acs2                              0x080089e0   Section        0  wifi_esp8266.o(i.func_acs2)
-    i.func_get_data_TCP                      0x08008b94   Section        0  main.o(i.func_get_data_TCP)
-    i.func_heat                              0x08008f1c   Section        0  main.o(i.func_heat)
-    i.func_synchro                           0x08008fd4   Section        0  main.o(i.func_synchro)
-    i.get_cor                                0x080090f0   Section        0  usbd_custom_hid_core.o(i.get_cor)
-    i.get_val_for_SET                        0x08009110   Section        0  stm32f0xx_it.o(i.get_val_for_SET)
-    i.getstr_BUF_USB                         0x080094ac   Section        0  wifi_esp8266.o(i.getstr_BUF_USB)
-    i.init_ADC_STM                           0x08009540   Section        0  user_init.o(i.init_ADC_STM)
-    i.init_GPIO_ineterrupt                   0x08009580   Section        0  user_init.o(i.init_GPIO_ineterrupt)
-    init_GPIO_ineterrupt                     0x08009581   Thumb Code    56  user_init.o(i.init_GPIO_ineterrupt)
-    i.init_PORT_ADC                          0x080095c4   Section        0  user_init.o(i.init_PORT_ADC)
-    i.init_PORT_B                            0x08009640   Section        0  user_init.o(i.init_PORT_B)
-    i.init_WIFI_server                       0x080096e0   Section        0  wifi_esp8266.o(i.init_WIFI_server)
-    i.init_constTxt                          0x08009ba8   Section        0  wifi_esp8266.o(i.init_constTxt)
-    i.init_gpio_                             0x08009cec   Section        0  user_init.o(i.init_gpio_)
-    i.init_out_for_SMART                     0x08009cfc   Section        0  func.o(i.init_out_for_SMART)
-    i.init_paramESP8266                      0x08009f3c   Section        0  wifi_esp8266.o(i.init_paramESP8266)
-    i.init_tmr                               0x0800a0f8   Section        0  user_init.o(i.init_tmr)
-    i.init_tmr16                             0x0800a138   Section        0  user_init.o(i.init_tmr16)
-    i.init_tmr2                              0x0800a184   Section        0  user_init.o(i.init_tmr2)
-    i.iwdg_init                              0x0800a1c8   Section        0  user_init.o(i.iwdg_init)
-    i.led_answer                             0x0800a200   Section        0  main.o(i.led_answer)
-    i.led_one_OFF                            0x0800a240   Section        0  user_init.o(i.led_one_OFF)
-    i.led_one_ON                             0x0800a24c   Section        0  user_init.o(i.led_one_ON)
-    i.load_DEF_setESP                        0x0800a254   Section        0  main.o(i.load_DEF_setESP)
-    i.main                                   0x0800a290   Section        0  main.o(i.main)
-    i.out_echo_from_ESP                      0x0800b2a0   Section        0  main.o(i.out_echo_from_ESP)
-    i.out_temp_LCDTM1637                     0x0800b354   Section        0  tm1637.o(i.out_temp_LCDTM1637)
-    i.pow                                    0x0800b41c   Section        0  pow.o(i.pow)
-    i.programm_resetESP                      0x0800be18   Section        0  wifi_esp8266.o(i.programm_resetESP)
-    i.read_FLASH_CORR                        0x0800bed0   Section        0  usbd_custom_hid_core.o(i.read_FLASH_CORR)
-    i.read_modework                          0x0800bf2c   Section        0  main.o(i.read_modework)
-    i.ready_rep                              0x0800c380   Section        0  wifi_esp8266.o(i.ready_rep)
-    i.ready_send_dataWIFI                    0x0800c518   Section        0  wifi_esp8266.o(i.ready_send_dataWIFI)
-    i.ready_str_for_alarm                    0x0800c78c   Section        0  main.o(i.ready_str_for_alarm)
-    i.real_temp                              0x0800c8d8   Section        0  func.o(i.real_temp)
-    i.recieved_word                          0x0800d280   Section        0  wifi_esp8266.o(i.recieved_word)
-    i.reset_ESP8266                          0x0800d618   Section        0  main.o(i.reset_ESP8266)
-    i.reset_exist_connect                    0x0800d654   Section        0  wifi_esp8266.o(i.reset_exist_connect)
-    i.run_ADCSTM                             0x0800d678   Section        0  func.o(i.run_ADCSTM)
-    i.save_CORR_DEF                          0x0800d6a0   Section        0  usbd_custom_hid_core.o(i.save_CORR_DEF)
-    i.save_coeff_cor                         0x0800d760   Section        0  usbd_custom_hid_core.o(i.save_coeff_cor)
-    i.save_modework                          0x0800d808   Section        0  main.o(i.save_modework)
-    i.save_net                               0x0800d8c0   Section        0  main.o(i.save_net)
-    i.sendUSB_getCOM_data                    0x0800d9f4   Section        0  wifi_esp8266.o(i.sendUSB_getCOM_data)
-    i.send_CIPSEND_mail                      0x0800da14   Section        0  wifi_esp8266.o(i.send_CIPSEND_mail)
-    i.send_MAIL                              0x0800dc24   Section        0  wifi_esp8266.o(i.send_MAIL)
-    i.send_data_clientWIFI                   0x0800e478   Section        0  wifi_esp8266.o(i.send_data_clientWIFI)
-    i.send_integer                           0x0800e494   Section        0  usart_stm.o(i.send_integer)
-    i.send_str_USB                           0x0800e4cc   Section        0  wifi_esp8266.o(i.send_str_USB)
-    i.set_newNET                             0x0800e5a8   Section        0  wifi_esp8266.o(i.set_newNET)
-    i.show_data                              0x0800e9a8   Section        0  stm32f0xx_it.o(i.show_data)
-    i.size_get_bytes_from_com                0x0800ecc4   Section        0  wifi_esp8266.o(i.size_get_bytes_from_com)
-    i.sqrt                                   0x0800ee20   Section        0  sqrt.o(i.sqrt)
-    i.start_wait_word                        0x0800ee68   Section        0  wifi_esp8266.o(i.start_wait_word)
-    i.wait_OK                                0x0800ef34   Section        0  wifi_esp8266.o(i.wait_OK)
-    i.work_ADC_STM                           0x0800ef60   Section        0  func.o(i.work_ADC_STM)
-    x$fpl$deqf                               0x0800f0ac   Section      100  deqf.o(x$fpl$deqf)
-    x$fpl$dleqf                              0x0800f110   Section      100  dlef.o(x$fpl$dleqf)
-    x$fpl$drleqf                             0x0800f174   Section      104  drlef.o(x$fpl$drleqf)
-    .constdata                               0x0800f1dc   Section       26  tm1637.o(.constdata)
-    x$fpl$usenofp                            0x0800f1dc   Section        0  usenofp.o(x$fpl$usenofp)
-    .constdata                               0x0800f1f8   Section       48  usart_stm.o(.constdata)
-    .constdata                               0x0800f228   Section       91  usbd_custom_hid_core.o(.constdata)
-    .constdata                               0x0800f283   Section       32  usbd_desc.o(.constdata)
-    .constdata                               0x0800f2a3   Section        5  wifi_esp8266.o(.constdata)
-    .constdata                               0x0800f2a8   Section      128  ddiv.o(.constdata)
-    ddiv_reciptbl                            0x0800f2a8   Data         128  ddiv.o(.constdata)
-    .constdata                               0x0800f328   Section      136  pow.o(.constdata)
-    bp                                       0x0800f328   Data          16  pow.o(.constdata)
-    dp_h                                     0x0800f338   Data          16  pow.o(.constdata)
-    dp_l                                     0x0800f348   Data          16  pow.o(.constdata)
-    L                                        0x0800f358   Data          48  pow.o(.constdata)
-    P                                        0x0800f388   Data          40  pow.o(.constdata)
-    .constdata                               0x0800f3b0   Section        8  qnan.o(.constdata)
-    .conststring                             0x0800f3b8   Section      295  main.o(.conststring)
+    i.check_ESP                              0x080085b4   Section        0  wifi_esp8266.o(i.check_ESP)
+    i.check_exist_CON                        0x08008630   Section        0  wifi_esp8266.o(i.check_exist_CON)
+    i.comport_Init                           0x0800864c   Section        0  usart_stm.o(i.comport_Init)
+    i.data_answer                            0x080086c8   Section        0  stm32f0xx_it.o(i.data_answer)
+    i.data_transmit_clientWIFI               0x08008714   Section        0  stm32f0xx_it.o(i.data_transmit_clientWIFI)
+    i.disp_scrsave                           0x08008874   Section        0  tm1637.o(i.disp_scrsave)
+    i.disp_set_mode                          0x0800890c   Section        0  tm1637.o(i.disp_set_mode)
+    i.filter_median                          0x08008a00   Section        0  func.o(i.filter_median)
+    i.flash_read                             0x08008a54   Section        0  main.o(i.flash_read)
+    i.func_acs2                              0x08008a5c   Section        0  wifi_esp8266.o(i.func_acs2)
+    i.func_air_control                       0x08008c10   Section        0  main.o(i.func_air_control)
+    i.func_get_data_TCP                      0x08008c74   Section        0  main.o(i.func_get_data_TCP)
+    i.func_heat                              0x08008ffc   Section        0  main.o(i.func_heat)
+    i.func_synchro                           0x080090b4   Section        0  main.o(i.func_synchro)
+    i.get_cor                                0x080091d0   Section        0  usbd_custom_hid_core.o(i.get_cor)
+    i.get_val_for_SET                        0x080091f0   Section        0  stm32f0xx_it.o(i.get_val_for_SET)
+    i.getstr_BUF_USB                         0x0800958c   Section        0  wifi_esp8266.o(i.getstr_BUF_USB)
+    i.init_ADC_STM                           0x08009620   Section        0  user_init.o(i.init_ADC_STM)
+    i.init_GPIO_ineterrupt                   0x08009660   Section        0  user_init.o(i.init_GPIO_ineterrupt)
+    init_GPIO_ineterrupt                     0x08009661   Thumb Code    56  user_init.o(i.init_GPIO_ineterrupt)
+    i.init_PORT_ADC                          0x080096a4   Section        0  user_init.o(i.init_PORT_ADC)
+    i.init_PORT_B                            0x08009720   Section        0  user_init.o(i.init_PORT_B)
+    i.init_WIFI_server                       0x080097c0   Section        0  wifi_esp8266.o(i.init_WIFI_server)
+    i.init_constTxt                          0x08009c88   Section        0  wifi_esp8266.o(i.init_constTxt)
+    i.init_gpio_                             0x08009dcc   Section        0  user_init.o(i.init_gpio_)
+    i.init_out_for_SMART                     0x08009ddc   Section        0  func.o(i.init_out_for_SMART)
+    i.init_paramESP8266                      0x0800a01c   Section        0  wifi_esp8266.o(i.init_paramESP8266)
+    i.init_tmr                               0x0800a1d8   Section        0  user_init.o(i.init_tmr)
+    i.init_tmr16                             0x0800a218   Section        0  user_init.o(i.init_tmr16)
+    i.init_tmr2                              0x0800a264   Section        0  user_init.o(i.init_tmr2)
+    i.iwdg_init                              0x0800a2a8   Section        0  user_init.o(i.iwdg_init)
+    i.led_answer                             0x0800a2e0   Section        0  main.o(i.led_answer)
+    i.led_one_OFF                            0x0800a320   Section        0  user_init.o(i.led_one_OFF)
+    i.led_one_ON                             0x0800a32c   Section        0  user_init.o(i.led_one_ON)
+    i.load_DEF_setESP                        0x0800a334   Section        0  main.o(i.load_DEF_setESP)
+    i.main                                   0x0800a370   Section        0  main.o(i.main)
+    i.out_echo_from_ESP                      0x0800b25c   Section        0  main.o(i.out_echo_from_ESP)
+    i.out_temp_LCDTM1637                     0x0800b310   Section        0  tm1637.o(i.out_temp_LCDTM1637)
+    i.pow                                    0x0800b3d8   Section        0  pow.o(i.pow)
+    i.programm_resetESP                      0x0800bdd4   Section        0  wifi_esp8266.o(i.programm_resetESP)
+    i.read_FLASH_CORR                        0x0800be8c   Section        0  usbd_custom_hid_core.o(i.read_FLASH_CORR)
+    i.read_modework                          0x0800bee8   Section        0  main.o(i.read_modework)
+    i.ready_rep                              0x0800c33c   Section        0  wifi_esp8266.o(i.ready_rep)
+    i.ready_send_dataWIFI                    0x0800c4d4   Section        0  wifi_esp8266.o(i.ready_send_dataWIFI)
+    i.ready_str_for_alarm                    0x0800c748   Section        0  main.o(i.ready_str_for_alarm)
+    i.real_temp                              0x0800c894   Section        0  func.o(i.real_temp)
+    i.recieved_word                          0x0800d23c   Section        0  wifi_esp8266.o(i.recieved_word)
+    i.reset_ESP8266                          0x0800d5d4   Section        0  main.o(i.reset_ESP8266)
+    i.reset_exist_connect                    0x0800d610   Section        0  wifi_esp8266.o(i.reset_exist_connect)
+    i.run_ADCSTM                             0x0800d634   Section        0  func.o(i.run_ADCSTM)
+    i.save_CORR_DEF                          0x0800d65c   Section        0  usbd_custom_hid_core.o(i.save_CORR_DEF)
+    i.save_coeff_cor                         0x0800d71c   Section        0  usbd_custom_hid_core.o(i.save_coeff_cor)
+    i.save_modework                          0x0800d7c4   Section        0  main.o(i.save_modework)
+    i.save_net                               0x0800d87c   Section        0  main.o(i.save_net)
+    i.sendUSB_getCOM_data                    0x0800d9b0   Section        0  wifi_esp8266.o(i.sendUSB_getCOM_data)
+    i.send_CIPSEND_mail                      0x0800d9d0   Section        0  wifi_esp8266.o(i.send_CIPSEND_mail)
+    i.send_MAIL                              0x0800dbe0   Section        0  wifi_esp8266.o(i.send_MAIL)
+    i.send_data_clientWIFI                   0x0800e434   Section        0  wifi_esp8266.o(i.send_data_clientWIFI)
+    i.send_integer                           0x0800e450   Section        0  usart_stm.o(i.send_integer)
+    i.send_str_USB                           0x0800e488   Section        0  wifi_esp8266.o(i.send_str_USB)
+    i.set_newNET                             0x0800e564   Section        0  wifi_esp8266.o(i.set_newNET)
+    i.show_data                              0x0800e964   Section        0  stm32f0xx_it.o(i.show_data)
+    i.size_get_bytes_from_com                0x0800ec80   Section        0  wifi_esp8266.o(i.size_get_bytes_from_com)
+    i.sqrt                                   0x0800eddc   Section        0  sqrt.o(i.sqrt)
+    i.start_wait_word                        0x0800ee24   Section        0  wifi_esp8266.o(i.start_wait_word)
+    i.wait_OK                                0x0800eef0   Section        0  wifi_esp8266.o(i.wait_OK)
+    i.work_ADC_STM                           0x0800ef1c   Section        0  func.o(i.work_ADC_STM)
+    x$fpl$deqf                               0x0800f068   Section      100  deqf.o(x$fpl$deqf)
+    x$fpl$dleqf                              0x0800f0cc   Section      100  dlef.o(x$fpl$dleqf)
+    x$fpl$drleqf                             0x0800f130   Section      104  drlef.o(x$fpl$drleqf)
+    .constdata                               0x0800f198   Section       26  tm1637.o(.constdata)
+    x$fpl$usenofp                            0x0800f198   Section        0  usenofp.o(x$fpl$usenofp)
+    .constdata                               0x0800f1b4   Section       48  usart_stm.o(.constdata)
+    .constdata                               0x0800f1e4   Section       91  usbd_custom_hid_core.o(.constdata)
+    .constdata                               0x0800f23f   Section       32  usbd_desc.o(.constdata)
+    .constdata                               0x0800f25f   Section        5  wifi_esp8266.o(.constdata)
+    .constdata                               0x0800f264   Section      128  ddiv.o(.constdata)
+    ddiv_reciptbl                            0x0800f264   Data         128  ddiv.o(.constdata)
+    .constdata                               0x0800f2e8   Section      136  pow.o(.constdata)
+    bp                                       0x0800f2e8   Data          16  pow.o(.constdata)
+    dp_h                                     0x0800f2f8   Data          16  pow.o(.constdata)
+    dp_l                                     0x0800f308   Data          16  pow.o(.constdata)
+    L                                        0x0800f318   Data          48  pow.o(.constdata)
+    P                                        0x0800f348   Data          40  pow.o(.constdata)
+    .constdata                               0x0800f370   Section        8  qnan.o(.constdata)
+    .conststring                             0x0800f378   Section      295  main.o(.conststring)
     .ARM.__AT_0x20000000                     0x20000000   Section      192  main.o(.ARM.__AT_0x20000000)
     .data                                    0x200000c4   Section       16  stm32f0xx_rcc.o(.data)
     APBAHBPrescTable                         0x200000c4   Data          16  stm32f0xx_rcc.o(.data)
@@ -2528,99 +2540,101 @@ Image Symbol Table
     __mathlib_dbl_overflow                   0x08008551   Thumb Code    16  dunder.o(i.__mathlib_dbl_overflow)
     __mathlib_dbl_underflow                  0x08008565   Thumb Code    14  dunder.o(i.__mathlib_dbl_underflow)
     acs2                                     0x08008579   Thumb Code    56  usart_stm.o(i.acs2)
-    check_exist_CON                          0x080085b5   Thumb Code    22  wifi_esp8266.o(i.check_exist_CON)
-    comport_Init                             0x080085d1   Thumb Code   114  usart_stm.o(i.comport_Init)
-    data_answer                              0x0800864d   Thumb Code    60  stm32f0xx_it.o(i.data_answer)
-    data_transmit_clientWIFI                 0x08008699   Thumb Code   330  stm32f0xx_it.o(i.data_transmit_clientWIFI)
-    disp_scrsave                             0x080087f9   Thumb Code   134  tm1637.o(i.disp_scrsave)
-    disp_set_mode                            0x08008891   Thumb Code   240  tm1637.o(i.disp_set_mode)
-    filter_median                            0x08008985   Thumb Code    84  func.o(i.filter_median)
-    flash_read                               0x080089d9   Thumb Code     6  main.o(i.flash_read)
-    func_acs2                                0x080089e1   Thumb Code   422  wifi_esp8266.o(i.func_acs2)
-    func_get_data_TCP                        0x08008b95   Thumb Code   838  main.o(i.func_get_data_TCP)
-    func_heat                                0x08008f1d   Thumb Code   170  main.o(i.func_heat)
-    func_synchro                             0x08008fd5   Thumb Code   252  main.o(i.func_synchro)
-    get_cor                                  0x080090f1   Thumb Code    22  usbd_custom_hid_core.o(i.get_cor)
-    get_val_for_SET                          0x08009111   Thumb Code   882  stm32f0xx_it.o(i.get_val_for_SET)
-    getstr_BUF_USB                           0x080094ad   Thumb Code   144  wifi_esp8266.o(i.getstr_BUF_USB)
-    init_ADC_STM                             0x08009541   Thumb Code    58  user_init.o(i.init_ADC_STM)
-    init_PORT_ADC                            0x080095c5   Thumb Code   116  user_init.o(i.init_PORT_ADC)
-    init_PORT_B                              0x08009641   Thumb Code   146  user_init.o(i.init_PORT_B)
-    init_WIFI_server                         0x080096e1   Thumb Code   824  wifi_esp8266.o(i.init_WIFI_server)
-    init_constTxt                            0x08009ba9   Thumb Code   218  wifi_esp8266.o(i.init_constTxt)
-    init_gpio_                               0x08009ced   Thumb Code    16  user_init.o(i.init_gpio_)
-    init_out_for_SMART                       0x08009cfd   Thumb Code   522  func.o(i.init_out_for_SMART)
-    init_paramESP8266                        0x08009f3d   Thumb Code   308  wifi_esp8266.o(i.init_paramESP8266)
-    init_tmr                                 0x0800a0f9   Thumb Code    50  user_init.o(i.init_tmr)
-    init_tmr16                               0x0800a139   Thumb Code    66  user_init.o(i.init_tmr16)
-    init_tmr2                                0x0800a185   Thumb Code    60  user_init.o(i.init_tmr2)
-    iwdg_init                                0x0800a1c9   Thumb Code    48  user_init.o(i.iwdg_init)
-    led_answer                               0x0800a201   Thumb Code    58  main.o(i.led_answer)
-    led_one_OFF                              0x0800a241   Thumb Code     6  user_init.o(i.led_one_OFF)
-    led_one_ON                               0x0800a24d   Thumb Code     8  user_init.o(i.led_one_ON)
-    load_DEF_setESP                          0x0800a255   Thumb Code    48  main.o(i.load_DEF_setESP)
-    main                                     0x0800a291   Thumb Code  3980  main.o(i.main)
-    out_echo_from_ESP                        0x0800b2a1   Thumb Code   160  main.o(i.out_echo_from_ESP)
-    out_temp_LCDTM1637                       0x0800b355   Thumb Code   182  tm1637.o(i.out_temp_LCDTM1637)
-    pow                                      0x0800b41d   Thumb Code  2548  pow.o(i.pow)
-    programm_resetESP                        0x0800be19   Thumb Code   116  wifi_esp8266.o(i.programm_resetESP)
-    read_FLASH_CORR                          0x0800bed1   Thumb Code    84  usbd_custom_hid_core.o(i.read_FLASH_CORR)
-    read_modework                            0x0800bf2d   Thumb Code   984  main.o(i.read_modework)
-    ready_rep                                0x0800c381   Thumb Code   350  wifi_esp8266.o(i.ready_rep)
-    ready_send_dataWIFI                      0x0800c519   Thumb Code   464  wifi_esp8266.o(i.ready_send_dataWIFI)
-    ready_str_for_alarm                      0x0800c78d   Thumb Code   260  main.o(i.ready_str_for_alarm)
-    real_temp                                0x0800c8d9   Thumb Code  2426  func.o(i.real_temp)
-    recieved_word                            0x0800d281   Thumb Code   776  wifi_esp8266.o(i.recieved_word)
-    reset_ESP8266                            0x0800d619   Thumb Code    50  main.o(i.reset_ESP8266)
-    reset_exist_connect                      0x0800d655   Thumb Code    28  wifi_esp8266.o(i.reset_exist_connect)
-    run_ADCSTM                               0x0800d679   Thumb Code    34  func.o(i.run_ADCSTM)
-    save_CORR_DEF                            0x0800d6a1   Thumb Code   162  usbd_custom_hid_core.o(i.save_CORR_DEF)
-    save_coeff_cor                           0x0800d761   Thumb Code   158  usbd_custom_hid_core.o(i.save_coeff_cor)
-    save_modework                            0x0800d809   Thumb Code   164  main.o(i.save_modework)
-    save_net                                 0x0800d8c1   Thumb Code   304  main.o(i.save_net)
-    sendUSB_getCOM_data                      0x0800d9f5   Thumb Code    26  wifi_esp8266.o(i.sendUSB_getCOM_data)
-    send_CIPSEND_mail                        0x0800da15   Thumb Code   432  wifi_esp8266.o(i.send_CIPSEND_mail)
-    send_MAIL                                0x0800dc25   Thumb Code  1912  wifi_esp8266.o(i.send_MAIL)
-    send_data_clientWIFI                     0x0800e479   Thumb Code    26  wifi_esp8266.o(i.send_data_clientWIFI)
-    send_integer                             0x0800e495   Thumb Code    50  usart_stm.o(i.send_integer)
-    send_str_USB                             0x0800e4cd   Thumb Code   216  wifi_esp8266.o(i.send_str_USB)
-    set_newNET                               0x0800e5a9   Thumb Code   766  wifi_esp8266.o(i.set_newNET)
-    show_data                                0x0800e9a9   Thumb Code   774  stm32f0xx_it.o(i.show_data)
-    size_get_bytes_from_com                  0x0800ecc5   Thumb Code   330  wifi_esp8266.o(i.size_get_bytes_from_com)
-    sqrt                                     0x0800ee21   Thumb Code    66  sqrt.o(i.sqrt)
-    start_wait_word                          0x0800ee69   Thumb Code   178  wifi_esp8266.o(i.start_wait_word)
-    wait_OK                                  0x0800ef35   Thumb Code    38  wifi_esp8266.o(i.wait_OK)
-    work_ADC_STM                             0x0800ef61   Thumb Code   302  func.o(i.work_ADC_STM)
-    __aeabi_cdcmpeq                          0x0800f0ad   Thumb Code     0  deqf.o(x$fpl$deqf)
-    _dcmpeq                                  0x0800f0ad   Thumb Code    94  deqf.o(x$fpl$deqf)
-    __aeabi_cdcmple                          0x0800f111   Thumb Code     0  dlef.o(x$fpl$dleqf)
-    _dcmple                                  0x0800f111   Thumb Code    94  dlef.o(x$fpl$dleqf)
-    __aeabi_cdrcmple                         0x0800f175   Thumb Code     0  drlef.o(x$fpl$drleqf)
-    _drcmple                                 0x0800f175   Thumb Code   100  drlef.o(x$fpl$drleqf)
-    __I$use$fp                               0x0800f1dc   Number         0  usenofp.o(x$fpl$usenofp)
-    seg_data                                 0x0800f1dc   Data          10  tm1637.o(.constdata)
-    air_segm                                 0x0800f1e6   Data           4  tm1637.o(.constdata)
-    heat_segm                                0x0800f1ea   Data           4  tm1637.o(.constdata)
-    street_segm                              0x0800f1ee   Data           4  tm1637.o(.constdata)
-    boiler_segm                              0x0800f1f2   Data           4  tm1637.o(.constdata)
-    COM_USART_CLK                            0x0800f1f8   Data           8  usart_stm.o(.constdata)
-    COM_TX_PORT_CLK                          0x0800f200   Data           8  usart_stm.o(.constdata)
-    COM_RX_PORT_CLK                          0x0800f208   Data           8  usart_stm.o(.constdata)
-    COM_TX_PIN                               0x0800f210   Data           4  usart_stm.o(.constdata)
-    COM_RX_PIN                               0x0800f214   Data           4  usart_stm.o(.constdata)
-    COM_TX_PIN_SOURCE                        0x0800f218   Data           4  usart_stm.o(.constdata)
-    COM_RX_PIN_SOURCE                        0x0800f21c   Data           4  usart_stm.o(.constdata)
-    COM_TX_AF                                0x0800f220   Data           4  usart_stm.o(.constdata)
-    COM_RX_AF                                0x0800f224   Data           4  usart_stm.o(.constdata)
-    USBD_HID_CfgDesc                         0x0800f228   Data          41  usbd_custom_hid_core.o(.constdata)
-    CustomHID_ReportDescriptor               0x0800f251   Data          50  usbd_custom_hid_core.o(.constdata)
-    USBD_DeviceDesc                          0x0800f283   Data          18  usbd_desc.o(.constdata)
-    USBD_DeviceQualifierDesc                 0x0800f295   Data          10  usbd_desc.o(.constdata)
-    USBD_LangIDDesc                          0x0800f29f   Data           4  usbd_desc.o(.constdata)
-    str_error                                0x0800f2a3   Data           5  wifi_esp8266.o(.constdata)
-    __mathlib_zero                           0x0800f3b0   Data           8  qnan.o(.constdata)
-    Region$$Table$$Base                      0x0800f4e0   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x0800f510   Number         0  anon$$obj.o(Region$$Table)
+    check_ESP                                0x080085b5   Thumb Code    68  wifi_esp8266.o(i.check_ESP)
+    check_exist_CON                          0x08008631   Thumb Code    22  wifi_esp8266.o(i.check_exist_CON)
+    comport_Init                             0x0800864d   Thumb Code   114  usart_stm.o(i.comport_Init)
+    data_answer                              0x080086c9   Thumb Code    60  stm32f0xx_it.o(i.data_answer)
+    data_transmit_clientWIFI                 0x08008715   Thumb Code   330  stm32f0xx_it.o(i.data_transmit_clientWIFI)
+    disp_scrsave                             0x08008875   Thumb Code   134  tm1637.o(i.disp_scrsave)
+    disp_set_mode                            0x0800890d   Thumb Code   240  tm1637.o(i.disp_set_mode)
+    filter_median                            0x08008a01   Thumb Code    84  func.o(i.filter_median)
+    flash_read                               0x08008a55   Thumb Code     6  main.o(i.flash_read)
+    func_acs2                                0x08008a5d   Thumb Code   422  wifi_esp8266.o(i.func_acs2)
+    func_air_control                         0x08008c11   Thumb Code    86  main.o(i.func_air_control)
+    func_get_data_TCP                        0x08008c75   Thumb Code   838  main.o(i.func_get_data_TCP)
+    func_heat                                0x08008ffd   Thumb Code   170  main.o(i.func_heat)
+    func_synchro                             0x080090b5   Thumb Code   252  main.o(i.func_synchro)
+    get_cor                                  0x080091d1   Thumb Code    22  usbd_custom_hid_core.o(i.get_cor)
+    get_val_for_SET                          0x080091f1   Thumb Code   882  stm32f0xx_it.o(i.get_val_for_SET)
+    getstr_BUF_USB                           0x0800958d   Thumb Code   144  wifi_esp8266.o(i.getstr_BUF_USB)
+    init_ADC_STM                             0x08009621   Thumb Code    58  user_init.o(i.init_ADC_STM)
+    init_PORT_ADC                            0x080096a5   Thumb Code   116  user_init.o(i.init_PORT_ADC)
+    init_PORT_B                              0x08009721   Thumb Code   146  user_init.o(i.init_PORT_B)
+    init_WIFI_server                         0x080097c1   Thumb Code   824  wifi_esp8266.o(i.init_WIFI_server)
+    init_constTxt                            0x08009c89   Thumb Code   218  wifi_esp8266.o(i.init_constTxt)
+    init_gpio_                               0x08009dcd   Thumb Code    16  user_init.o(i.init_gpio_)
+    init_out_for_SMART                       0x08009ddd   Thumb Code   522  func.o(i.init_out_for_SMART)
+    init_paramESP8266                        0x0800a01d   Thumb Code   308  wifi_esp8266.o(i.init_paramESP8266)
+    init_tmr                                 0x0800a1d9   Thumb Code    50  user_init.o(i.init_tmr)
+    init_tmr16                               0x0800a219   Thumb Code    66  user_init.o(i.init_tmr16)
+    init_tmr2                                0x0800a265   Thumb Code    60  user_init.o(i.init_tmr2)
+    iwdg_init                                0x0800a2a9   Thumb Code    48  user_init.o(i.iwdg_init)
+    led_answer                               0x0800a2e1   Thumb Code    58  main.o(i.led_answer)
+    led_one_OFF                              0x0800a321   Thumb Code     6  user_init.o(i.led_one_OFF)
+    led_one_ON                               0x0800a32d   Thumb Code     8  user_init.o(i.led_one_ON)
+    load_DEF_setESP                          0x0800a335   Thumb Code    48  main.o(i.load_DEF_setESP)
+    main                                     0x0800a371   Thumb Code  3766  main.o(i.main)
+    out_echo_from_ESP                        0x0800b25d   Thumb Code   160  main.o(i.out_echo_from_ESP)
+    out_temp_LCDTM1637                       0x0800b311   Thumb Code   182  tm1637.o(i.out_temp_LCDTM1637)
+    pow                                      0x0800b3d9   Thumb Code  2548  pow.o(i.pow)
+    programm_resetESP                        0x0800bdd5   Thumb Code   116  wifi_esp8266.o(i.programm_resetESP)
+    read_FLASH_CORR                          0x0800be8d   Thumb Code    84  usbd_custom_hid_core.o(i.read_FLASH_CORR)
+    read_modework                            0x0800bee9   Thumb Code   984  main.o(i.read_modework)
+    ready_rep                                0x0800c33d   Thumb Code   350  wifi_esp8266.o(i.ready_rep)
+    ready_send_dataWIFI                      0x0800c4d5   Thumb Code   464  wifi_esp8266.o(i.ready_send_dataWIFI)
+    ready_str_for_alarm                      0x0800c749   Thumb Code   260  main.o(i.ready_str_for_alarm)
+    real_temp                                0x0800c895   Thumb Code  2426  func.o(i.real_temp)
+    recieved_word                            0x0800d23d   Thumb Code   776  wifi_esp8266.o(i.recieved_word)
+    reset_ESP8266                            0x0800d5d5   Thumb Code    50  main.o(i.reset_ESP8266)
+    reset_exist_connect                      0x0800d611   Thumb Code    28  wifi_esp8266.o(i.reset_exist_connect)
+    run_ADCSTM                               0x0800d635   Thumb Code    34  func.o(i.run_ADCSTM)
+    save_CORR_DEF                            0x0800d65d   Thumb Code   162  usbd_custom_hid_core.o(i.save_CORR_DEF)
+    save_coeff_cor                           0x0800d71d   Thumb Code   158  usbd_custom_hid_core.o(i.save_coeff_cor)
+    save_modework                            0x0800d7c5   Thumb Code   164  main.o(i.save_modework)
+    save_net                                 0x0800d87d   Thumb Code   304  main.o(i.save_net)
+    sendUSB_getCOM_data                      0x0800d9b1   Thumb Code    26  wifi_esp8266.o(i.sendUSB_getCOM_data)
+    send_CIPSEND_mail                        0x0800d9d1   Thumb Code   432  wifi_esp8266.o(i.send_CIPSEND_mail)
+    send_MAIL                                0x0800dbe1   Thumb Code  1912  wifi_esp8266.o(i.send_MAIL)
+    send_data_clientWIFI                     0x0800e435   Thumb Code    26  wifi_esp8266.o(i.send_data_clientWIFI)
+    send_integer                             0x0800e451   Thumb Code    50  usart_stm.o(i.send_integer)
+    send_str_USB                             0x0800e489   Thumb Code   216  wifi_esp8266.o(i.send_str_USB)
+    set_newNET                               0x0800e565   Thumb Code   766  wifi_esp8266.o(i.set_newNET)
+    show_data                                0x0800e965   Thumb Code   774  stm32f0xx_it.o(i.show_data)
+    size_get_bytes_from_com                  0x0800ec81   Thumb Code   330  wifi_esp8266.o(i.size_get_bytes_from_com)
+    sqrt                                     0x0800eddd   Thumb Code    66  sqrt.o(i.sqrt)
+    start_wait_word                          0x0800ee25   Thumb Code   178  wifi_esp8266.o(i.start_wait_word)
+    wait_OK                                  0x0800eef1   Thumb Code    38  wifi_esp8266.o(i.wait_OK)
+    work_ADC_STM                             0x0800ef1d   Thumb Code   302  func.o(i.work_ADC_STM)
+    __aeabi_cdcmpeq                          0x0800f069   Thumb Code     0  deqf.o(x$fpl$deqf)
+    _dcmpeq                                  0x0800f069   Thumb Code    94  deqf.o(x$fpl$deqf)
+    __aeabi_cdcmple                          0x0800f0cd   Thumb Code     0  dlef.o(x$fpl$dleqf)
+    _dcmple                                  0x0800f0cd   Thumb Code    94  dlef.o(x$fpl$dleqf)
+    __aeabi_cdrcmple                         0x0800f131   Thumb Code     0  drlef.o(x$fpl$drleqf)
+    _drcmple                                 0x0800f131   Thumb Code   100  drlef.o(x$fpl$drleqf)
+    __I$use$fp                               0x0800f198   Number         0  usenofp.o(x$fpl$usenofp)
+    seg_data                                 0x0800f198   Data          10  tm1637.o(.constdata)
+    air_segm                                 0x0800f1a2   Data           4  tm1637.o(.constdata)
+    heat_segm                                0x0800f1a6   Data           4  tm1637.o(.constdata)
+    street_segm                              0x0800f1aa   Data           4  tm1637.o(.constdata)
+    boiler_segm                              0x0800f1ae   Data           4  tm1637.o(.constdata)
+    COM_USART_CLK                            0x0800f1b4   Data           8  usart_stm.o(.constdata)
+    COM_TX_PORT_CLK                          0x0800f1bc   Data           8  usart_stm.o(.constdata)
+    COM_RX_PORT_CLK                          0x0800f1c4   Data           8  usart_stm.o(.constdata)
+    COM_TX_PIN                               0x0800f1cc   Data           4  usart_stm.o(.constdata)
+    COM_RX_PIN                               0x0800f1d0   Data           4  usart_stm.o(.constdata)
+    COM_TX_PIN_SOURCE                        0x0800f1d4   Data           4  usart_stm.o(.constdata)
+    COM_RX_PIN_SOURCE                        0x0800f1d8   Data           4  usart_stm.o(.constdata)
+    COM_TX_AF                                0x0800f1dc   Data           4  usart_stm.o(.constdata)
+    COM_RX_AF                                0x0800f1e0   Data           4  usart_stm.o(.constdata)
+    USBD_HID_CfgDesc                         0x0800f1e4   Data          41  usbd_custom_hid_core.o(.constdata)
+    CustomHID_ReportDescriptor               0x0800f20d   Data          50  usbd_custom_hid_core.o(.constdata)
+    USBD_DeviceDesc                          0x0800f23f   Data          18  usbd_desc.o(.constdata)
+    USBD_DeviceQualifierDesc                 0x0800f251   Data          10  usbd_desc.o(.constdata)
+    USBD_LangIDDesc                          0x0800f25b   Data           4  usbd_desc.o(.constdata)
+    str_error                                0x0800f25f   Data           5  wifi_esp8266.o(.constdata)
+    __mathlib_zero                           0x0800f370   Data           8  qnan.o(.constdata)
+    Region$$Table$$Base                      0x0800f4a0   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x0800f4d0   Number         0  anon$$obj.o(Region$$Table)
     VectorTable                              0x20000000   Data         192  main.o(.ARM.__AT_0x20000000)
     wInterrupt_Mask                          0x200000d4   Data           4  usb_dcd.o(.data)
     USBD_DCD_INT_cb                          0x200000d8   Data          36  usbd_core.o(.data)
@@ -2819,87 +2833,87 @@ Memory Map of the image
 
   Image Entry point : 0x080040c1
 
-  Load Region LR_IROM1 (Base: 0x08004000, Size: 0x0000bb44, Max: 0x0000c000, ABSOLUTE, COMPRESSED[0x0000b9c8])
+  Load Region LR_IROM1 (Base: 0x08004000, Size: 0x0000bb04, Max: 0x0000c000, ABSOLUTE, COMPRESSED[0x0000b988])
 
-    Execution Region ER_IROM1 (Exec base: 0x08004000, Load base: 0x08004000, Size: 0x0000b510, Max: 0x0000c000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08004000, Load base: 0x08004000, Size: 0x0000b4d0, Max: 0x0000c000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x08004000   0x08004000   0x000000c0   Data   RO            3    RESET               startup_stm32f072.o
-    0x080040c0   0x080040c0   0x00000008   Code   RO         5538  * !!!main             c_p.l(__main.o)
-    0x080040c8   0x080040c8   0x0000003c   Code   RO         5787    !!!scatter          c_p.l(__scatter.o)
-    0x08004104   0x08004104   0x0000001c   Code   RO         5789    !!handler_zi        c_p.l(__scatter_zi.o)
-    0x08004120   0x08004120   0x00000002   Code   RO         5655    .ARM.Collect$$libinit$$00000000  c_p.l(libinit.o)
-    0x08004122   0x08004122   0x00000000   Code   RO         5668    .ARM.Collect$$libinit$$00000002  c_p.l(libinit2.o)
-    0x08004122   0x08004122   0x00000000   Code   RO         5670    .ARM.Collect$$libinit$$00000004  c_p.l(libinit2.o)
-    0x08004122   0x08004122   0x00000000   Code   RO         5673    .ARM.Collect$$libinit$$0000000A  c_p.l(libinit2.o)
-    0x08004122   0x08004122   0x00000000   Code   RO         5675    .ARM.Collect$$libinit$$0000000C  c_p.l(libinit2.o)
-    0x08004122   0x08004122   0x00000000   Code   RO         5677    .ARM.Collect$$libinit$$0000000E  c_p.l(libinit2.o)
-    0x08004122   0x08004122   0x00000000   Code   RO         5680    .ARM.Collect$$libinit$$00000011  c_p.l(libinit2.o)
-    0x08004122   0x08004122   0x00000000   Code   RO         5682    .ARM.Collect$$libinit$$00000013  c_p.l(libinit2.o)
-    0x08004122   0x08004122   0x00000000   Code   RO         5684    .ARM.Collect$$libinit$$00000015  c_p.l(libinit2.o)
-    0x08004122   0x08004122   0x00000000   Code   RO         5686    .ARM.Collect$$libinit$$00000017  c_p.l(libinit2.o)
-    0x08004122   0x08004122   0x00000000   Code   RO         5688    .ARM.Collect$$libinit$$00000019  c_p.l(libinit2.o)
-    0x08004122   0x08004122   0x00000000   Code   RO         5690    .ARM.Collect$$libinit$$0000001B  c_p.l(libinit2.o)
-    0x08004122   0x08004122   0x00000000   Code   RO         5692    .ARM.Collect$$libinit$$0000001D  c_p.l(libinit2.o)
-    0x08004122   0x08004122   0x00000000   Code   RO         5694    .ARM.Collect$$libinit$$0000001F  c_p.l(libinit2.o)
-    0x08004122   0x08004122   0x00000000   Code   RO         5696    .ARM.Collect$$libinit$$00000021  c_p.l(libinit2.o)
-    0x08004122   0x08004122   0x00000000   Code   RO         5698    .ARM.Collect$$libinit$$00000023  c_p.l(libinit2.o)
-    0x08004122   0x08004122   0x00000000   Code   RO         5700    .ARM.Collect$$libinit$$00000025  c_p.l(libinit2.o)
-    0x08004122   0x08004122   0x00000000   Code   RO         5704    .ARM.Collect$$libinit$$0000002C  c_p.l(libinit2.o)
-    0x08004122   0x08004122   0x00000000   Code   RO         5706    .ARM.Collect$$libinit$$0000002E  c_p.l(libinit2.o)
-    0x08004122   0x08004122   0x00000000   Code   RO         5708    .ARM.Collect$$libinit$$00000030  c_p.l(libinit2.o)
-    0x08004122   0x08004122   0x00000000   Code   RO         5710    .ARM.Collect$$libinit$$00000032  c_p.l(libinit2.o)
-    0x08004122   0x08004122   0x00000002   Code   RO         5711    .ARM.Collect$$libinit$$00000033  c_p.l(libinit2.o)
-    0x08004124   0x08004124   0x00000002   Code   RO         5742    .ARM.Collect$$libshutdown$$00000000  c_p.l(libshutdown.o)
-    0x08004126   0x08004126   0x00000000   Code   RO         5768    .ARM.Collect$$libshutdown$$00000002  c_p.l(libshutdown2.o)
-    0x08004126   0x08004126   0x00000000   Code   RO         5770    .ARM.Collect$$libshutdown$$00000004  c_p.l(libshutdown2.o)
-    0x08004126   0x08004126   0x00000000   Code   RO         5773    .ARM.Collect$$libshutdown$$00000007  c_p.l(libshutdown2.o)
-    0x08004126   0x08004126   0x00000000   Code   RO         5776    .ARM.Collect$$libshutdown$$0000000A  c_p.l(libshutdown2.o)
-    0x08004126   0x08004126   0x00000000   Code   RO         5778    .ARM.Collect$$libshutdown$$0000000C  c_p.l(libshutdown2.o)
-    0x08004126   0x08004126   0x00000000   Code   RO         5781    .ARM.Collect$$libshutdown$$0000000F  c_p.l(libshutdown2.o)
-    0x08004126   0x08004126   0x00000002   Code   RO         5782    .ARM.Collect$$libshutdown$$00000010  c_p.l(libshutdown2.o)
-    0x08004128   0x08004128   0x00000000   Code   RO         5579    .ARM.Collect$$rtentry$$00000000  c_p.l(__rtentry.o)
-    0x08004128   0x08004128   0x00000000   Code   RO         5613    .ARM.Collect$$rtentry$$00000002  c_p.l(__rtentry2.o)
-    0x08004128   0x08004128   0x00000006   Code   RO         5625    .ARM.Collect$$rtentry$$00000004  c_p.l(__rtentry4.o)
-    0x0800412e   0x0800412e   0x00000000   Code   RO         5615    .ARM.Collect$$rtentry$$00000009  c_p.l(__rtentry2.o)
-    0x0800412e   0x0800412e   0x00000004   Code   RO         5616    .ARM.Collect$$rtentry$$0000000A  c_p.l(__rtentry2.o)
-    0x08004132   0x08004132   0x00000000   Code   RO         5618    .ARM.Collect$$rtentry$$0000000C  c_p.l(__rtentry2.o)
-    0x08004132   0x08004132   0x00000008   Code   RO         5619    .ARM.Collect$$rtentry$$0000000D  c_p.l(__rtentry2.o)
-    0x0800413a   0x0800413a   0x00000002   Code   RO         5659    .ARM.Collect$$rtexit$$00000000  c_p.l(rtexit.o)
-    0x0800413c   0x0800413c   0x00000000   Code   RO         5715    .ARM.Collect$$rtexit$$00000002  c_p.l(rtexit2.o)
-    0x0800413c   0x0800413c   0x00000004   Code   RO         5716    .ARM.Collect$$rtexit$$00000003  c_p.l(rtexit2.o)
-    0x08004140   0x08004140   0x00000006   Code   RO         5717    .ARM.Collect$$rtexit$$00000004  c_p.l(rtexit2.o)
+    0x080040c0   0x080040c0   0x00000008   Code   RO         5550  * !!!main             c_p.l(__main.o)
+    0x080040c8   0x080040c8   0x0000003c   Code   RO         5799    !!!scatter          c_p.l(__scatter.o)
+    0x08004104   0x08004104   0x0000001c   Code   RO         5801    !!handler_zi        c_p.l(__scatter_zi.o)
+    0x08004120   0x08004120   0x00000002   Code   RO         5667    .ARM.Collect$$libinit$$00000000  c_p.l(libinit.o)
+    0x08004122   0x08004122   0x00000000   Code   RO         5680    .ARM.Collect$$libinit$$00000002  c_p.l(libinit2.o)
+    0x08004122   0x08004122   0x00000000   Code   RO         5682    .ARM.Collect$$libinit$$00000004  c_p.l(libinit2.o)
+    0x08004122   0x08004122   0x00000000   Code   RO         5685    .ARM.Collect$$libinit$$0000000A  c_p.l(libinit2.o)
+    0x08004122   0x08004122   0x00000000   Code   RO         5687    .ARM.Collect$$libinit$$0000000C  c_p.l(libinit2.o)
+    0x08004122   0x08004122   0x00000000   Code   RO         5689    .ARM.Collect$$libinit$$0000000E  c_p.l(libinit2.o)
+    0x08004122   0x08004122   0x00000000   Code   RO         5692    .ARM.Collect$$libinit$$00000011  c_p.l(libinit2.o)
+    0x08004122   0x08004122   0x00000000   Code   RO         5694    .ARM.Collect$$libinit$$00000013  c_p.l(libinit2.o)
+    0x08004122   0x08004122   0x00000000   Code   RO         5696    .ARM.Collect$$libinit$$00000015  c_p.l(libinit2.o)
+    0x08004122   0x08004122   0x00000000   Code   RO         5698    .ARM.Collect$$libinit$$00000017  c_p.l(libinit2.o)
+    0x08004122   0x08004122   0x00000000   Code   RO         5700    .ARM.Collect$$libinit$$00000019  c_p.l(libinit2.o)
+    0x08004122   0x08004122   0x00000000   Code   RO         5702    .ARM.Collect$$libinit$$0000001B  c_p.l(libinit2.o)
+    0x08004122   0x08004122   0x00000000   Code   RO         5704    .ARM.Collect$$libinit$$0000001D  c_p.l(libinit2.o)
+    0x08004122   0x08004122   0x00000000   Code   RO         5706    .ARM.Collect$$libinit$$0000001F  c_p.l(libinit2.o)
+    0x08004122   0x08004122   0x00000000   Code   RO         5708    .ARM.Collect$$libinit$$00000021  c_p.l(libinit2.o)
+    0x08004122   0x08004122   0x00000000   Code   RO         5710    .ARM.Collect$$libinit$$00000023  c_p.l(libinit2.o)
+    0x08004122   0x08004122   0x00000000   Code   RO         5712    .ARM.Collect$$libinit$$00000025  c_p.l(libinit2.o)
+    0x08004122   0x08004122   0x00000000   Code   RO         5716    .ARM.Collect$$libinit$$0000002C  c_p.l(libinit2.o)
+    0x08004122   0x08004122   0x00000000   Code   RO         5718    .ARM.Collect$$libinit$$0000002E  c_p.l(libinit2.o)
+    0x08004122   0x08004122   0x00000000   Code   RO         5720    .ARM.Collect$$libinit$$00000030  c_p.l(libinit2.o)
+    0x08004122   0x08004122   0x00000000   Code   RO         5722    .ARM.Collect$$libinit$$00000032  c_p.l(libinit2.o)
+    0x08004122   0x08004122   0x00000002   Code   RO         5723    .ARM.Collect$$libinit$$00000033  c_p.l(libinit2.o)
+    0x08004124   0x08004124   0x00000002   Code   RO         5754    .ARM.Collect$$libshutdown$$00000000  c_p.l(libshutdown.o)
+    0x08004126   0x08004126   0x00000000   Code   RO         5780    .ARM.Collect$$libshutdown$$00000002  c_p.l(libshutdown2.o)
+    0x08004126   0x08004126   0x00000000   Code   RO         5782    .ARM.Collect$$libshutdown$$00000004  c_p.l(libshutdown2.o)
+    0x08004126   0x08004126   0x00000000   Code   RO         5785    .ARM.Collect$$libshutdown$$00000007  c_p.l(libshutdown2.o)
+    0x08004126   0x08004126   0x00000000   Code   RO         5788    .ARM.Collect$$libshutdown$$0000000A  c_p.l(libshutdown2.o)
+    0x08004126   0x08004126   0x00000000   Code   RO         5790    .ARM.Collect$$libshutdown$$0000000C  c_p.l(libshutdown2.o)
+    0x08004126   0x08004126   0x00000000   Code   RO         5793    .ARM.Collect$$libshutdown$$0000000F  c_p.l(libshutdown2.o)
+    0x08004126   0x08004126   0x00000002   Code   RO         5794    .ARM.Collect$$libshutdown$$00000010  c_p.l(libshutdown2.o)
+    0x08004128   0x08004128   0x00000000   Code   RO         5591    .ARM.Collect$$rtentry$$00000000  c_p.l(__rtentry.o)
+    0x08004128   0x08004128   0x00000000   Code   RO         5625    .ARM.Collect$$rtentry$$00000002  c_p.l(__rtentry2.o)
+    0x08004128   0x08004128   0x00000006   Code   RO         5637    .ARM.Collect$$rtentry$$00000004  c_p.l(__rtentry4.o)
+    0x0800412e   0x0800412e   0x00000000   Code   RO         5627    .ARM.Collect$$rtentry$$00000009  c_p.l(__rtentry2.o)
+    0x0800412e   0x0800412e   0x00000004   Code   RO         5628    .ARM.Collect$$rtentry$$0000000A  c_p.l(__rtentry2.o)
+    0x08004132   0x08004132   0x00000000   Code   RO         5630    .ARM.Collect$$rtentry$$0000000C  c_p.l(__rtentry2.o)
+    0x08004132   0x08004132   0x00000008   Code   RO         5631    .ARM.Collect$$rtentry$$0000000D  c_p.l(__rtentry2.o)
+    0x0800413a   0x0800413a   0x00000002   Code   RO         5671    .ARM.Collect$$rtexit$$00000000  c_p.l(rtexit.o)
+    0x0800413c   0x0800413c   0x00000000   Code   RO         5727    .ARM.Collect$$rtexit$$00000002  c_p.l(rtexit2.o)
+    0x0800413c   0x0800413c   0x00000004   Code   RO         5728    .ARM.Collect$$rtexit$$00000003  c_p.l(rtexit2.o)
+    0x08004140   0x08004140   0x00000006   Code   RO         5729    .ARM.Collect$$rtexit$$00000004  c_p.l(rtexit2.o)
     0x08004146   0x08004146   0x00000002   PAD
-    0x08004148   0x08004148   0x00000038   Code   RO         5526    .emb_text           c_p.l(rt_memcpy.o)
+    0x08004148   0x08004148   0x00000038   Code   RO         5538    .emb_text           c_p.l(rt_memcpy.o)
     0x08004180   0x08004180   0x00000038   Code   RO            4    .text               startup_stm32f072.o
-    0x080041b8   0x080041b8   0x00000044   Code   RO         5524    .text               c_p.l(strlen.o)
-    0x080041fc   0x080041fc   0x00000040   Code   RO         5530    .text               c_p.l(rt_memclr.o)
-    0x0800423c   0x0800423c   0x0000015a   Code   RO         5532    .text               c_p.l(aeabi_sdiv.o)
-    0x08004396   0x08004396   0x00000006   Code   RO         5536    .text               c_p.l(heapauxi.o)
-    0x0800439c   0x0800439c   0x00000358   Code   RO         5540    .text               fz_ps.l(daddsub.o)
-    0x080046f4   0x080046f4   0x00000448   Code   RO         5542    .text               fz_ps.l(ddiv.o)
-    0x08004b3c   0x08004b3c   0x0000006c   Code   RO         5547    .text               fz_ps.l(dfixi.o)
-    0x08004ba8   0x08004ba8   0x00000048   Code   RO         5549    .text               fz_ps.l(dfixui.o)
-    0x08004bf0   0x08004bf0   0x00000058   Code   RO         5551    .text               fz_ps.l(dflti.o)
-    0x08004c48   0x08004c48   0x00000248   Code   RO         5557    .text               fz_ps.l(dmul.o)
-    0x08004e90   0x08004e90   0x00000016   Code   RO         5584    .text               c_p.l(_rserrno.o)
+    0x080041b8   0x080041b8   0x00000044   Code   RO         5536    .text               c_p.l(strlen.o)
+    0x080041fc   0x080041fc   0x00000040   Code   RO         5542    .text               c_p.l(rt_memclr.o)
+    0x0800423c   0x0800423c   0x0000015a   Code   RO         5544    .text               c_p.l(aeabi_sdiv.o)
+    0x08004396   0x08004396   0x00000006   Code   RO         5548    .text               c_p.l(heapauxi.o)
+    0x0800439c   0x0800439c   0x00000358   Code   RO         5552    .text               fz_ps.l(daddsub.o)
+    0x080046f4   0x080046f4   0x00000448   Code   RO         5554    .text               fz_ps.l(ddiv.o)
+    0x08004b3c   0x08004b3c   0x0000006c   Code   RO         5559    .text               fz_ps.l(dfixi.o)
+    0x08004ba8   0x08004ba8   0x00000048   Code   RO         5561    .text               fz_ps.l(dfixui.o)
+    0x08004bf0   0x08004bf0   0x00000058   Code   RO         5563    .text               fz_ps.l(dflti.o)
+    0x08004c48   0x08004c48   0x00000248   Code   RO         5569    .text               fz_ps.l(dmul.o)
+    0x08004e90   0x08004e90   0x00000016   Code   RO         5596    .text               c_p.l(_rserrno.o)
     0x08004ea6   0x08004ea6   0x00000002   PAD
-    0x08004ea8   0x08004ea8   0x00000090   Code   RO         5586    .text               fz_ps.l(dcmpin.o)
-    0x08004f38   0x08004f38   0x00000060   Code   RO         5588    .text               fz_ps.l(dscalbn.o)
-    0x08004f98   0x08004f98   0x00000100   Code   RO         5590    .text               fz_ps.l(dsqrt.o)
-    0x08005098   0x08005098   0x00000008   Code   RO         5632    .text               c_p.l(rt_errno_addr_intlibspace.o)
-    0x080050a0   0x080050a0   0x0000002e   Code   RO         5634    .text               fz_ps.l(cmpret.o)
+    0x08004ea8   0x08004ea8   0x00000090   Code   RO         5598    .text               fz_ps.l(dcmpin.o)
+    0x08004f38   0x08004f38   0x00000060   Code   RO         5600    .text               fz_ps.l(dscalbn.o)
+    0x08004f98   0x08004f98   0x00000100   Code   RO         5602    .text               fz_ps.l(dsqrt.o)
+    0x08005098   0x08005098   0x00000008   Code   RO         5644    .text               c_p.l(rt_errno_addr_intlibspace.o)
+    0x080050a0   0x080050a0   0x0000002e   Code   RO         5646    .text               fz_ps.l(cmpret.o)
     0x080050ce   0x080050ce   0x00000002   PAD
-    0x080050d0   0x080050d0   0x00000014   Code   RO         5636    .text               fz_ps.l(dnan2.o)
-    0x080050e4   0x080050e4   0x00000008   Code   RO         5638    .text               c_p.l(libspace.o)
-    0x080050ec   0x080050ec   0x0000003e   Code   RO         5641    .text               c_p.l(sys_stackheap_outer.o)
-    0x0800512a   0x0800512a   0x00000010   Code   RO         5644    .text               c_p.l(exit.o)
-    0x0800513a   0x0800513a   0x0000005e   Code   RO         5656    .text               fz_ps.l(retnan.o)
-    0x08005198   0x08005198   0x0000000c   Code   RO         5712    .text               c_p.l(sys_exit.o)
-    0x080051a4   0x080051a4   0x00000002   Code   RO         5731    .text               c_p.l(use_no_semi.o)
-    0x080051a6   0x080051a6   0x00000000   Code   RO         5733    .text               c_p.l(indicate_semi.o)
-    0x080051a6   0x080051a6   0x00000056   Code   RO         5785    .text               c_p.l(__dczerorl2.o)
+    0x080050d0   0x080050d0   0x00000014   Code   RO         5648    .text               fz_ps.l(dnan2.o)
+    0x080050e4   0x080050e4   0x00000008   Code   RO         5650    .text               c_p.l(libspace.o)
+    0x080050ec   0x080050ec   0x0000003e   Code   RO         5653    .text               c_p.l(sys_stackheap_outer.o)
+    0x0800512a   0x0800512a   0x00000010   Code   RO         5656    .text               c_p.l(exit.o)
+    0x0800513a   0x0800513a   0x0000005e   Code   RO         5668    .text               fz_ps.l(retnan.o)
+    0x08005198   0x08005198   0x0000000c   Code   RO         5724    .text               c_p.l(sys_exit.o)
+    0x080051a4   0x080051a4   0x00000002   Code   RO         5743    .text               c_p.l(use_no_semi.o)
+    0x080051a6   0x080051a6   0x00000000   Code   RO         5745    .text               c_p.l(indicate_semi.o)
+    0x080051a6   0x080051a6   0x00000056   Code   RO         5797    .text               c_p.l(__dczerorl2.o)
     0x080051fc   0x080051fc   0x00000018   Code   RO           17    i.ADC_ChannelConfig  stm32f0xx_adc.o
     0x08005214   0x08005214   0x00000018   Code   RO           21    i.ADC_Cmd           stm32f0xx_adc.o
     0x0800522c   0x0800522c   0x0000003c   Code   RO           27    i.ADC_GetCalibrationFactor  stm32f0xx_adc.o
@@ -2928,9 +2942,9 @@ Memory Map of the image
     0x08005b68   0x08005b68   0x00000034   Code   RO         4525    i.Delay             main.o
     0x08005b9c   0x08005b9c   0x00000022   Code   RO         4526    i.DelaymS           main.o
     0x08005bbe   0x08005bbe   0x0000002e   Code   RO         4527    i.DelayuS           main.o
-    0x08005bec   0x08005bec   0x0000000a   Code   RO         4676    i.EXTI0_1_IRQHandler  stm32f0xx_it.o
+    0x08005bec   0x08005bec   0x0000000a   Code   RO         4682    i.EXTI0_1_IRQHandler  stm32f0xx_it.o
     0x08005bf6   0x08005bf6   0x00000002   PAD
-    0x08005bf8   0x08005bf8   0x000000ac   Code   RO         4677    i.EXTI4_15_IRQHandler  stm32f0xx_it.o
+    0x08005bf8   0x08005bf8   0x000000ac   Code   RO         4683    i.EXTI4_15_IRQHandler  stm32f0xx_it.o
     0x08005ca4   0x08005ca4   0x0000000c   Code   RO         1100    i.EXTI_ClearITPendingBit  stm32f0xx_exti.o
     0x08005cb0   0x08005cb0   0x0000004c   Code   RO         1163    i.FLASH_ErasePage   stm32f0xx_flash.o
     0x08005cfc   0x08005cfc   0x0000003c   Code   RO         1166    i.FLASH_GetStatus   stm32f0xx_flash.o
@@ -2947,22 +2961,22 @@ Memory Map of the image
     0x08005f74   0x08005f74   0x00000024   Code   RO         3693    i.GetEPDblBuf1Count  usb_core.o
     0x08005f98   0x08005f98   0x00000024   Code   RO         3696    i.GetEPRxCount      usb_core.o
     0x08005fbc   0x08005fbc   0x00000024   Code   RO         3699    i.GetEPTxCount      usb_core.o
-    0x08005fe0   0x08005fe0   0x00000030   Code   RO         5117    i.Get_SerialNum     usbd_desc.o
-    0x08006010   0x08006010   0x0000002c   Code   RO         4678    i.HardFault_Handler  stm32f0xx_it.o
+    0x08005fe0   0x08005fe0   0x00000030   Code   RO         5123    i.Get_SerialNum     usbd_desc.o
+    0x08006010   0x08006010   0x0000002c   Code   RO         4684    i.HardFault_Handler  stm32f0xx_it.o
     0x0800603c   0x0800603c   0x00000010   Code   RO         1719    i.IWDG_Enable       stm32f0xx_iwdg.o
     0x0800604c   0x0800604c   0x00000010   Code   RO         1721    i.IWDG_ReloadCounter  stm32f0xx_iwdg.o
     0x0800605c   0x0800605c   0x0000000c   Code   RO         1722    i.IWDG_SetPrescaler  stm32f0xx_iwdg.o
     0x08006068   0x08006068   0x0000000c   Code   RO         1723    i.IWDG_SetReload    stm32f0xx_iwdg.o
     0x08006074   0x08006074   0x0000000c   Code   RO         1725    i.IWDG_WriteAccessCmd  stm32f0xx_iwdg.o
-    0x08006080   0x08006080   0x00000036   Code   RO         5118    i.IntToUnicode      usbd_desc.o
-    0x080060b6   0x080060b6   0x00000002   Code   RO         4679    i.NMI_Handler       stm32f0xx_it.o
-    0x080060b8   0x080060b8   0x00000014   Code   RO         4914    i.NVIC_EnableIRQ    usart_stm.o
-    0x080060cc   0x080060cc   0x00000014   Code   RO         5284    i.NVIC_EnableIRQ    user_init.o
+    0x08006080   0x08006080   0x00000036   Code   RO         5124    i.IntToUnicode      usbd_desc.o
+    0x080060b6   0x080060b6   0x00000002   Code   RO         4685    i.NMI_Handler       stm32f0xx_it.o
+    0x080060b8   0x080060b8   0x00000014   Code   RO         4920    i.NVIC_EnableIRQ    usart_stm.o
+    0x080060cc   0x080060cc   0x00000014   Code   RO         5290    i.NVIC_EnableIRQ    user_init.o
     0x080060e0   0x080060e0   0x00000070   Code   RO         1775    i.NVIC_Init         stm32f0xx_misc.o
-    0x08006150   0x08006150   0x00000078   Code   RO         5285    i.NVIC_SetPriority  user_init.o
-    0x080061c8   0x080061c8   0x0000001c   Code   RO         4680    i.NVIC_SystemReset  stm32f0xx_it.o
+    0x08006150   0x08006150   0x00000078   Code   RO         5291    i.NVIC_SetPriority  user_init.o
+    0x080061c8   0x080061c8   0x0000001c   Code   RO         4686    i.NVIC_SystemReset  stm32f0xx_it.o
     0x080061e4   0x080061e4   0x00000024   Code   RO         3706    i.PMAToUserBufferCopy  usb_core.o
-    0x08006208   0x08006208   0x00000002   Code   RO         4681    i.PendSV_Handler    stm32f0xx_it.o
+    0x08006208   0x08006208   0x00000002   Code   RO         4687    i.PendSV_Handler    stm32f0xx_it.o
     0x0800620a   0x0800620a   0x00000002   PAD
     0x0800620c   0x0800620c   0x00000020   Code   RO         1882    i.RCC_AHBPeriphClockCmd  stm32f0xx_rcc.o
     0x0800622c   0x0800622c   0x00000020   Code   RO         1884    i.RCC_APB1PeriphClockCmd  stm32f0xx_rcc.o
@@ -2972,15 +2986,15 @@ Memory Map of the image
     0x0800647c   0x0800647c   0x00000048   Code   RO         1897    i.RCC_GetFlagStatus  stm32f0xx_rcc.o
     0x080064c4   0x080064c4   0x00000024   Code   RO         1910    i.RCC_LSICmd        stm32f0xx_rcc.o
     0x080064e8   0x080064e8   0x0000001c   Code   RO         1920    i.RCC_USBCLKConfig  stm32f0xx_rcc.o
-    0x08006504   0x08006504   0x00000018   Code   RO         5016    i.ResetKey          usbd_custom_hid_core.o
-    0x0800651c   0x0800651c   0x000000d4   Code   RO         5194    i.Resume            usbd_pwr.o
-    0x080065f0   0x080065f0   0x00000020   Code   RO         5195    i.Resume_Init       usbd_pwr.o
-    0x08006610   0x08006610   0x000000e0   Code   RO         4915    i.STM_EVAL_COMInit  usart_stm.o
-    0x080066f0   0x080066f0   0x00000002   Code   RO         4682    i.SVC_Handler       stm32f0xx_it.o
+    0x08006504   0x08006504   0x00000018   Code   RO         5022    i.ResetKey          usbd_custom_hid_core.o
+    0x0800651c   0x0800651c   0x000000d4   Code   RO         5200    i.Resume            usbd_pwr.o
+    0x080065f0   0x080065f0   0x00000020   Code   RO         5201    i.Resume_Init       usbd_pwr.o
+    0x08006610   0x08006610   0x000000e0   Code   RO         4921    i.STM_EVAL_COMInit  usart_stm.o
+    0x080066f0   0x080066f0   0x00000002   Code   RO         4688    i.SVC_Handler       stm32f0xx_it.o
     0x080066f2   0x080066f2   0x00000002   PAD
     0x080066f4   0x080066f4   0x0000001c   Code   RO         2684    i.SYSCFG_MemoryRemapConfig  stm32f0xx_syscfg.o
-    0x08006710   0x08006710   0x00000024   Code   RO         4916    i.SerialPutChar     usart_stm.o
-    0x08006734   0x08006734   0x00000016   Code   RO         4917    i.Serial_PutString  usart_stm.o
+    0x08006710   0x08006710   0x00000024   Code   RO         4922    i.SerialPutChar     usart_stm.o
+    0x08006734   0x08006734   0x00000016   Code   RO         4923    i.Serial_PutString  usart_stm.o
     0x0800674a   0x0800674a   0x00000002   PAD
     0x0800674c   0x0800674c   0x00000014   Code   RO         3707    i.SetBTABLE         usb_core.o
     0x08006760   0x08006760   0x0000000c   Code   RO         3708    i.SetCNTR           usb_core.o
@@ -2995,14 +3009,14 @@ Memory Map of the image
     0x08006998   0x08006998   0x00000044   Code   RO         3727    i.SetEPTxStatus     usb_core.o
     0x080069dc   0x080069dc   0x00000024   Code   RO         3729    i.SetEPType         usb_core.o
     0x08006a00   0x08006a00   0x0000000c   Code   RO         3731    i.SetISTR           usb_core.o
-    0x08006a0c   0x08006a0c   0x000000d8   Code   RO         4799    i.SetSysClock       system_stm32f0xx.o
-    0x08006ae4   0x08006ae4   0x00000020   Code   RO         5196    i.Suspend           usbd_pwr.o
-    0x08006b04   0x08006b04   0x00000002   Code   RO         4683    i.SysTick_Handler   stm32f0xx_it.o
+    0x08006a0c   0x08006a0c   0x000000d8   Code   RO         4805    i.SetSysClock       system_stm32f0xx.o
+    0x08006ae4   0x08006ae4   0x00000020   Code   RO         5202    i.Suspend           usbd_pwr.o
+    0x08006b04   0x08006b04   0x00000002   Code   RO         4689    i.SysTick_Handler   stm32f0xx_it.o
     0x08006b06   0x08006b06   0x00000002   PAD
-    0x08006b08   0x08006b08   0x00000080   Code   RO         4801    i.SystemInit        system_stm32f0xx.o
-    0x08006b88   0x08006b88   0x000001e4   Code   RO         4684    i.TIM16_IRQHandler  stm32f0xx_it.o
-    0x08006d6c   0x08006d6c   0x0000020c   Code   RO         4685    i.TIM2_IRQHandler   stm32f0xx_it.o
-    0x08006f78   0x08006f78   0x0000007c   Code   RO         4686    i.TIM3_IRQHandler   stm32f0xx_it.o
+    0x08006b08   0x08006b08   0x00000080   Code   RO         4807    i.SystemInit        system_stm32f0xx.o
+    0x08006b88   0x08006b88   0x000001e4   Code   RO         4690    i.TIM16_IRQHandler  stm32f0xx_it.o
+    0x08006d6c   0x08006d6c   0x0000020c   Code   RO         4691    i.TIM2_IRQHandler   stm32f0xx_it.o
+    0x08006f78   0x08006f78   0x0000007c   Code   RO         4692    i.TIM3_IRQHandler   stm32f0xx_it.o
     0x08006ff4   0x08006ff4   0x0000001c   Code   RO         2743    i.TIM_ARRPreloadConfig  stm32f0xx_tim.o
     0x08007010   0x08007010   0x00000006   Code   RO         2750    i.TIM_ClearITPendingBit  stm32f0xx_tim.o
     0x08007016   0x08007016   0x00000002   PAD
@@ -3010,17 +3024,17 @@ Memory Map of the image
     0x08007034   0x08007034   0x00000014   Code   RO         2780    i.TIM_ITConfig      stm32f0xx_tim.o
     0x08007048   0x08007048   0x0000007c   Code   RO         2828    i.TIM_TimeBaseInit  stm32f0xx_tim.o
     0x080070c4   0x080070c4   0x00000012   Code   RO         2829    i.TIM_TimeBaseStructInit  stm32f0xx_tim.o
-    0x080070d6   0x080070d6   0x0000001a   Code   RO         4836    i.TM1637_clear      tm1637.o
-    0x080070f0   0x080070f0   0x0000003e   Code   RO         4837    i.TM1637_display_segments  tm1637.o
+    0x080070d6   0x080070d6   0x0000001a   Code   RO         4842    i.TM1637_clear      tm1637.o
+    0x080070f0   0x080070f0   0x0000003e   Code   RO         4843    i.TM1637_display_segments  tm1637.o
     0x0800712e   0x0800712e   0x00000002   PAD
-    0x08007130   0x08007130   0x0000003c   Code   RO         4838    i.TM1637_init       tm1637.o
-    0x0800716c   0x0800716c   0x00000014   Code   RO         4839    i.TM1637_send_command  tm1637.o
-    0x08007180   0x08007180   0x00000038   Code   RO         4840    i.TM1637_start      tm1637.o
-    0x080071b8   0x080071b8   0x00000054   Code   RO         4841    i.TM1637_stop       tm1637.o
-    0x0800720c   0x0800720c   0x000000f8   Code   RO         4842    i.TM1637_write_byte  tm1637.o
+    0x08007130   0x08007130   0x0000003c   Code   RO         4844    i.TM1637_init       tm1637.o
+    0x0800716c   0x0800716c   0x00000014   Code   RO         4845    i.TM1637_send_command  tm1637.o
+    0x08007180   0x08007180   0x00000038   Code   RO         4846    i.TM1637_start      tm1637.o
+    0x080071b8   0x080071b8   0x00000054   Code   RO         4847    i.TM1637_stop       tm1637.o
+    0x0800720c   0x0800720c   0x000000f8   Code   RO         4848    i.TM1637_write_byte  tm1637.o
     0x08007304   0x08007304   0x00000028   Code   RO         3733    i.ToggleDTOG_RX     usb_core.o
     0x0800732c   0x0800732c   0x00000028   Code   RO         3734    i.ToggleDTOG_TX     usb_core.o
-    0x08007354   0x08007354   0x000000c4   Code   RO         4687    i.USART2_IRQHandler  stm32f0xx_it.o
+    0x08007354   0x08007354   0x000000c4   Code   RO         4693    i.USART2_IRQHandler  stm32f0xx_it.o
     0x08007418   0x08007418   0x00000018   Code   RO         3314    i.USART_Cmd         stm32f0xx_usart.o
     0x08007430   0x08007430   0x00000014   Code   RO         3322    i.USART_GetFlagStatus  stm32f0xx_usart.o
     0x08007444   0x08007444   0x000000e8   Code   RO         3326    i.USART_Init        stm32f0xx_usart.o
@@ -3043,15 +3057,15 @@ Memory Map of the image
     0x08007902   0x08007902   0x00000014   Code   RO         4359    i.USBD_GetLen       usbd_req.o
     0x08007916   0x08007916   0x00000044   Code   RO         4360    i.USBD_GetStatus    usbd_req.o
     0x0800795a   0x0800795a   0x0000004e   Code   RO         4361    i.USBD_GetString    usbd_req.o
-    0x080079a8   0x080079a8   0x00000014   Code   RO         5017    i.USBD_HID_DataIn   usbd_custom_hid_core.o
-    0x080079bc   0x080079bc   0x000001a0   Code   RO         5018    i.USBD_HID_DataOut  usbd_custom_hid_core.o
-    0x08007b5c   0x08007b5c   0x0000001a   Code   RO         5019    i.USBD_HID_DeInit   usbd_custom_hid_core.o
-    0x08007b76   0x08007b76   0x00000006   Code   RO         5020    i.USBD_HID_EP0_RxReady  usbd_custom_hid_core.o
-    0x08007b7c   0x08007b7c   0x00000010   Code   RO         5021    i.USBD_HID_GetCfgDesc  usbd_custom_hid_core.o
-    0x08007b8c   0x08007b8c   0x00000050   Code   RO         5022    i.USBD_HID_Init     usbd_custom_hid_core.o
-    0x08007bdc   0x08007bdc   0x0000001e   Code   RO         5023    i.USBD_HID_SendReport  usbd_custom_hid_core.o
+    0x080079a8   0x080079a8   0x00000014   Code   RO         5023    i.USBD_HID_DataIn   usbd_custom_hid_core.o
+    0x080079bc   0x080079bc   0x000001a0   Code   RO         5024    i.USBD_HID_DataOut  usbd_custom_hid_core.o
+    0x08007b5c   0x08007b5c   0x0000001a   Code   RO         5025    i.USBD_HID_DeInit   usbd_custom_hid_core.o
+    0x08007b76   0x08007b76   0x00000006   Code   RO         5026    i.USBD_HID_EP0_RxReady  usbd_custom_hid_core.o
+    0x08007b7c   0x08007b7c   0x00000010   Code   RO         5027    i.USBD_HID_GetCfgDesc  usbd_custom_hid_core.o
+    0x08007b8c   0x08007b8c   0x00000050   Code   RO         5028    i.USBD_HID_Init     usbd_custom_hid_core.o
+    0x08007bdc   0x08007bdc   0x0000001e   Code   RO         5029    i.USBD_HID_SendReport  usbd_custom_hid_core.o
     0x08007bfa   0x08007bfa   0x00000002   PAD
-    0x08007bfc   0x08007bfc   0x00000114   Code   RO         5024    i.USBD_HID_Setup    usbd_custom_hid_core.o
+    0x08007bfc   0x08007bfc   0x00000114   Code   RO         5030    i.USBD_HID_Setup    usbd_custom_hid_core.o
     0x08007d10   0x08007d10   0x00000042   Code   RO         4204    i.USBD_Init         usbd_core.o
     0x08007d52   0x08007d52   0x00000030   Code   RO         4362    i.USBD_ParseSetupRequest  usbd_req.o
     0x08007d82   0x08007d82   0x00000046   Code   RO         4205    i.USBD_Reset        usbd_core.o
@@ -3068,125 +3082,128 @@ Memory Map of the image
     0x0800816c   0x0800816c   0x0000004e   Code   RO         4368    i.USBD_StdItfReq    usbd_req.o
     0x080081ba   0x080081ba   0x00000018   Code   RO         4210    i.USBD_Suspend      usbd_core.o
     0x080081d2   0x080081d2   0x00000002   PAD
-    0x080081d4   0x080081d4   0x00000024   Code   RO         5119    i.USBD_USR_ConfigStrDescriptor  usbd_desc.o
-    0x080081f8   0x080081f8   0x00000002   Code   RO         5234    i.USBD_USR_DeviceConfigured  usbd_usr.o
+    0x080081d4   0x080081d4   0x00000024   Code   RO         5125    i.USBD_USR_ConfigStrDescriptor  usbd_desc.o
+    0x080081f8   0x080081f8   0x00000002   Code   RO         5240    i.USBD_USR_DeviceConfigured  usbd_usr.o
     0x080081fa   0x080081fa   0x00000002   PAD
-    0x080081fc   0x080081fc   0x00000010   Code   RO         5120    i.USBD_USR_DeviceDescriptor  usbd_desc.o
-    0x0800820c   0x0800820c   0x00000002   Code   RO         5235    i.USBD_USR_DeviceReset  usbd_usr.o
-    0x0800820e   0x0800820e   0x00000002   Code   RO         5236    i.USBD_USR_DeviceResumed  usbd_usr.o
-    0x08008210   0x08008210   0x00000002   Code   RO         5237    i.USBD_USR_DeviceSuspended  usbd_usr.o
-    0x08008212   0x08008212   0x00000002   Code   RO         5238    i.USBD_USR_Init     usbd_usr.o
-    0x08008214   0x08008214   0x00000028   Code   RO         5121    i.USBD_USR_InterfaceStrDescriptor  usbd_desc.o
-    0x0800823c   0x0800823c   0x00000010   Code   RO         5122    i.USBD_USR_LangIDStrDescriptor  usbd_desc.o
-    0x0800824c   0x0800824c   0x00000024   Code   RO         5123    i.USBD_USR_ManufacturerStrDescriptor  usbd_desc.o
-    0x08008270   0x08008270   0x00000024   Code   RO         5124    i.USBD_USR_ProductStrDescriptor  usbd_desc.o
-    0x08008294   0x08008294   0x00000010   Code   RO         5125    i.USBD_USR_SerialStrDescriptor  usbd_desc.o
-    0x080082a4   0x080082a4   0x00000018   Code   RO         4990    i.USB_BSP_EnableInterrupt  usb_bsp.o
-    0x080082bc   0x080082bc   0x00000014   Code   RO         4991    i.USB_BSP_Init      usb_bsp.o
-    0x080082d0   0x080082d0   0x00000008   Code   RO         4688    i.USB_IRQHandler    stm32f0xx_it.o
+    0x080081fc   0x080081fc   0x00000010   Code   RO         5126    i.USBD_USR_DeviceDescriptor  usbd_desc.o
+    0x0800820c   0x0800820c   0x00000002   Code   RO         5241    i.USBD_USR_DeviceReset  usbd_usr.o
+    0x0800820e   0x0800820e   0x00000002   Code   RO         5242    i.USBD_USR_DeviceResumed  usbd_usr.o
+    0x08008210   0x08008210   0x00000002   Code   RO         5243    i.USBD_USR_DeviceSuspended  usbd_usr.o
+    0x08008212   0x08008212   0x00000002   Code   RO         5244    i.USBD_USR_Init     usbd_usr.o
+    0x08008214   0x08008214   0x00000028   Code   RO         5127    i.USBD_USR_InterfaceStrDescriptor  usbd_desc.o
+    0x0800823c   0x0800823c   0x00000010   Code   RO         5128    i.USBD_USR_LangIDStrDescriptor  usbd_desc.o
+    0x0800824c   0x0800824c   0x00000024   Code   RO         5129    i.USBD_USR_ManufacturerStrDescriptor  usbd_desc.o
+    0x08008270   0x08008270   0x00000024   Code   RO         5130    i.USBD_USR_ProductStrDescriptor  usbd_desc.o
+    0x08008294   0x08008294   0x00000010   Code   RO         5131    i.USBD_USR_SerialStrDescriptor  usbd_desc.o
+    0x080082a4   0x080082a4   0x00000018   Code   RO         4996    i.USB_BSP_EnableInterrupt  usb_bsp.o
+    0x080082bc   0x080082bc   0x00000014   Code   RO         4997    i.USB_BSP_Init      usb_bsp.o
+    0x080082d0   0x080082d0   0x00000008   Code   RO         4694    i.USB_IRQHandler    stm32f0xx_it.o
     0x080082d8   0x080082d8   0x0000012c   Code   RO         4160    i.USB_Istr          usb_dcd_int.o
     0x08008404   0x08008404   0x0000002c   Code   RO         3735    i.UserToPMABufferCopy  usb_core.o
     0x08008430   0x08008430   0x0000001c   Code   RO         4444    i.__ARM_common_switch8  usbd_req.o
-    0x0800844c   0x0800844c   0x0000002c   Code   RO         5607    i.__ARM_fpclassify  m_ps.l(fpclassify.o)
-    0x08008478   0x08008478   0x000000ac   Code   RO         5609    i.__kernel_poly     m_ps.l(poly.o)
-    0x08008524   0x08008524   0x00000014   Code   RO         5593    i.__mathlib_dbl_divzero  m_ps.l(dunder.o)
-    0x08008538   0x08008538   0x00000008   Code   RO         5595    i.__mathlib_dbl_infnan2  m_ps.l(dunder.o)
-    0x08008540   0x08008540   0x00000010   Code   RO         5596    i.__mathlib_dbl_invalid  m_ps.l(dunder.o)
-    0x08008550   0x08008550   0x00000014   Code   RO         5597    i.__mathlib_dbl_overflow  m_ps.l(dunder.o)
-    0x08008564   0x08008564   0x00000014   Code   RO         5599    i.__mathlib_dbl_underflow  m_ps.l(dunder.o)
-    0x08008578   0x08008578   0x0000003c   Code   RO         4918    i.acs2              usart_stm.o
-    0x080085b4   0x080085b4   0x0000001c   Code   RO         5376    i.check_exist_CON   wifi_esp8266.o
-    0x080085d0   0x080085d0   0x0000007c   Code   RO         4919    i.comport_Init      usart_stm.o
-    0x0800864c   0x0800864c   0x0000004c   Code   RO         4689    i.data_answer       stm32f0xx_it.o
-    0x08008698   0x08008698   0x00000160   Code   RO         4690    i.data_transmit_clientWIFI  stm32f0xx_it.o
-    0x080087f8   0x080087f8   0x00000098   Code   RO         4843    i.disp_scrsave      tm1637.o
-    0x08008890   0x08008890   0x000000f4   Code   RO         4844    i.disp_set_mode     tm1637.o
-    0x08008984   0x08008984   0x00000054   Code   RO         4456    i.filter_median     func.o
-    0x080089d8   0x080089d8   0x00000006   Code   RO         4528    i.flash_read        main.o
-    0x080089de   0x080089de   0x00000002   PAD
-    0x080089e0   0x080089e0   0x000001b4   Code   RO         5377    i.func_acs2         wifi_esp8266.o
-    0x08008b94   0x08008b94   0x00000388   Code   RO         4529    i.func_get_data_TCP  main.o
-    0x08008f1c   0x08008f1c   0x000000b8   Code   RO         4530    i.func_heat         main.o
-    0x08008fd4   0x08008fd4   0x0000011c   Code   RO         4531    i.func_synchro      main.o
-    0x080090f0   0x080090f0   0x00000020   Code   RO         5025    i.get_cor           usbd_custom_hid_core.o
-    0x08009110   0x08009110   0x0000039c   Code   RO         4691    i.get_val_for_SET   stm32f0xx_it.o
-    0x080094ac   0x080094ac   0x00000094   Code   RO         5378    i.getstr_BUF_USB    wifi_esp8266.o
-    0x08009540   0x08009540   0x00000040   Code   RO         5286    i.init_ADC_STM      user_init.o
-    0x08009580   0x08009580   0x00000044   Code   RO         5287    i.init_GPIO_ineterrupt  user_init.o
-    0x080095c4   0x080095c4   0x0000007c   Code   RO         5288    i.init_PORT_ADC     user_init.o
-    0x08009640   0x08009640   0x000000a0   Code   RO         5289    i.init_PORT_B       user_init.o
-    0x080096e0   0x080096e0   0x000004c8   Code   RO         5379    i.init_WIFI_server  wifi_esp8266.o
-    0x08009ba8   0x08009ba8   0x00000144   Code   RO         5380    i.init_constTxt     wifi_esp8266.o
-    0x08009cec   0x08009cec   0x00000010   Code   RO         5290    i.init_gpio_        user_init.o
-    0x08009cfc   0x08009cfc   0x00000240   Code   RO         4457    i.init_out_for_SMART  func.o
-    0x08009f3c   0x08009f3c   0x000001bc   Code   RO         5381    i.init_paramESP8266  wifi_esp8266.o
-    0x0800a0f8   0x0800a0f8   0x00000040   Code   RO         5291    i.init_tmr          user_init.o
-    0x0800a138   0x0800a138   0x0000004c   Code   RO         5292    i.init_tmr16        user_init.o
-    0x0800a184   0x0800a184   0x00000044   Code   RO         5293    i.init_tmr2         user_init.o
-    0x0800a1c8   0x0800a1c8   0x00000038   Code   RO         5294    i.iwdg_init         user_init.o
-    0x0800a200   0x0800a200   0x00000040   Code   RO         4532    i.led_answer        main.o
-    0x0800a240   0x0800a240   0x0000000c   Code   RO         5295    i.led_one_OFF       user_init.o
-    0x0800a24c   0x0800a24c   0x00000008   Code   RO         5296    i.led_one_ON        user_init.o
-    0x0800a254   0x0800a254   0x0000003c   Code   RO         4533    i.load_DEF_setESP   main.o
-    0x0800a290   0x0800a290   0x00001010   Code   RO         4534    i.main              main.o
-    0x0800b2a0   0x0800b2a0   0x000000b4   Code   RO         4535    i.out_echo_from_ESP  main.o
-    0x0800b354   0x0800b354   0x000000c8   Code   RO         4845    i.out_temp_LCDTM1637  tm1637.o
-    0x0800b41c   0x0800b41c   0x000009fc   Code   RO         5562    i.pow               m_ps.l(pow.o)
-    0x0800be18   0x0800be18   0x000000b8   Code   RO         5382    i.programm_resetESP  wifi_esp8266.o
-    0x0800bed0   0x0800bed0   0x0000005c   Code   RO         5026    i.read_FLASH_CORR   usbd_custom_hid_core.o
-    0x0800bf2c   0x0800bf2c   0x00000454   Code   RO         4536    i.read_modework     main.o
-    0x0800c380   0x0800c380   0x00000198   Code   RO         5383    i.ready_rep         wifi_esp8266.o
-    0x0800c518   0x0800c518   0x00000274   Code   RO         5384    i.ready_send_dataWIFI  wifi_esp8266.o
-    0x0800c78c   0x0800c78c   0x0000014c   Code   RO         4537    i.ready_str_for_alarm  main.o
-    0x0800c8d8   0x0800c8d8   0x000009a8   Code   RO         4458    i.real_temp         func.o
-    0x0800d280   0x0800d280   0x00000398   Code   RO         5385    i.recieved_word     wifi_esp8266.o
-    0x0800d618   0x0800d618   0x0000003c   Code   RO         4538    i.reset_ESP8266     main.o
-    0x0800d654   0x0800d654   0x00000024   Code   RO         5387    i.reset_exist_connect  wifi_esp8266.o
-    0x0800d678   0x0800d678   0x00000028   Code   RO         4459    i.run_ADCSTM        func.o
-    0x0800d6a0   0x0800d6a0   0x000000c0   Code   RO         5027    i.save_CORR_DEF     usbd_custom_hid_core.o
-    0x0800d760   0x0800d760   0x000000a8   Code   RO         5028    i.save_coeff_cor    usbd_custom_hid_core.o
-    0x0800d808   0x0800d808   0x000000b8   Code   RO         4539    i.save_modework     main.o
-    0x0800d8c0   0x0800d8c0   0x00000134   Code   RO         4540    i.save_net          main.o
-    0x0800d9f4   0x0800d9f4   0x00000020   Code   RO         5388    i.sendUSB_getCOM_data  wifi_esp8266.o
-    0x0800da14   0x0800da14   0x00000210   Code   RO         5389    i.send_CIPSEND_mail  wifi_esp8266.o
-    0x0800dc24   0x0800dc24   0x00000854   Code   RO         5390    i.send_MAIL         wifi_esp8266.o
-    0x0800e478   0x0800e478   0x0000001a   Code   RO         5391    i.send_data_clientWIFI  wifi_esp8266.o
-    0x0800e492   0x0800e492   0x00000002   PAD
-    0x0800e494   0x0800e494   0x00000038   Code   RO         4921    i.send_integer      usart_stm.o
-    0x0800e4cc   0x0800e4cc   0x000000dc   Code   RO         5392    i.send_str_USB      wifi_esp8266.o
-    0x0800e5a8   0x0800e5a8   0x00000400   Code   RO         5393    i.set_newNET        wifi_esp8266.o
-    0x0800e9a8   0x0800e9a8   0x0000031c   Code   RO         4692    i.show_data         stm32f0xx_it.o
-    0x0800ecc4   0x0800ecc4   0x0000015c   Code   RO         5394    i.size_get_bytes_from_com  wifi_esp8266.o
-    0x0800ee20   0x0800ee20   0x00000048   Code   RO         5572    i.sqrt              m_ps.l(sqrt.o)
-    0x0800ee68   0x0800ee68   0x000000cc   Code   RO         5395    i.start_wait_word   wifi_esp8266.o
-    0x0800ef34   0x0800ef34   0x0000002c   Code   RO         5396    i.wait_OK           wifi_esp8266.o
-    0x0800ef60   0x0800ef60   0x0000014c   Code   RO         4460    i.work_ADC_STM      func.o
-    0x0800f0ac   0x0800f0ac   0x00000064   Code   RO         5545    x$fpl$deqf          fz_ps.l(deqf.o)
-    0x0800f110   0x0800f110   0x00000064   Code   RO         5555    x$fpl$dleqf         fz_ps.l(dlef.o)
-    0x0800f174   0x0800f174   0x00000068   Code   RO         5559    x$fpl$drleqf        fz_ps.l(drlef.o)
-    0x0800f1dc   0x0800f1dc   0x00000000   Code   RO         5592    x$fpl$usenofp       fz_ps.l(usenofp.o)
-    0x0800f1dc   0x0800f1dc   0x0000001a   Data   RO         4846    .constdata          tm1637.o
-    0x0800f1f6   0x0800f1f6   0x00000002   PAD
-    0x0800f1f8   0x0800f1f8   0x00000030   Data   RO         4924    .constdata          usart_stm.o
-    0x0800f228   0x0800f228   0x0000005b   Data   RO         5030    .constdata          usbd_custom_hid_core.o
-    0x0800f283   0x0800f283   0x00000020   Data   RO         5127    .constdata          usbd_desc.o
-    0x0800f2a3   0x0800f2a3   0x00000005   Data   RO         5398    .constdata          wifi_esp8266.o
-    0x0800f2a8   0x0800f2a8   0x00000080   Data   RO         5543    .constdata          fz_ps.l(ddiv.o)
-    0x0800f328   0x0800f328   0x00000088   Data   RO         5563    .constdata          m_ps.l(pow.o)
-    0x0800f3b0   0x0800f3b0   0x00000008   Data   RO         5611    .constdata          m_ps.l(qnan.o)
-    0x0800f3b8   0x0800f3b8   0x00000127   Data   RO         4543    .conststring        main.o
-    0x0800f4df   0x0800f4df   0x00000001   PAD
-    0x0800f4e0   0x0800f4e0   0x00000030   Data   RO         5783    Region$$Table       anon$$obj.o
+    0x0800844c   0x0800844c   0x0000002c   Code   RO         5619    i.__ARM_fpclassify  m_ps.l(fpclassify.o)
+    0x08008478   0x08008478   0x000000ac   Code   RO         5621    i.__kernel_poly     m_ps.l(poly.o)
+    0x08008524   0x08008524   0x00000014   Code   RO         5605    i.__mathlib_dbl_divzero  m_ps.l(dunder.o)
+    0x08008538   0x08008538   0x00000008   Code   RO         5607    i.__mathlib_dbl_infnan2  m_ps.l(dunder.o)
+    0x08008540   0x08008540   0x00000010   Code   RO         5608    i.__mathlib_dbl_invalid  m_ps.l(dunder.o)
+    0x08008550   0x08008550   0x00000014   Code   RO         5609    i.__mathlib_dbl_overflow  m_ps.l(dunder.o)
+    0x08008564   0x08008564   0x00000014   Code   RO         5611    i.__mathlib_dbl_underflow  m_ps.l(dunder.o)
+    0x08008578   0x08008578   0x0000003c   Code   RO         4924    i.acs2              usart_stm.o
+    0x080085b4   0x080085b4   0x0000007c   Code   RO         5382    i.check_ESP         wifi_esp8266.o
+    0x08008630   0x08008630   0x0000001c   Code   RO         5383    i.check_exist_CON   wifi_esp8266.o
+    0x0800864c   0x0800864c   0x0000007c   Code   RO         4925    i.comport_Init      usart_stm.o
+    0x080086c8   0x080086c8   0x0000004c   Code   RO         4695    i.data_answer       stm32f0xx_it.o
+    0x08008714   0x08008714   0x00000160   Code   RO         4696    i.data_transmit_clientWIFI  stm32f0xx_it.o
+    0x08008874   0x08008874   0x00000098   Code   RO         4849    i.disp_scrsave      tm1637.o
+    0x0800890c   0x0800890c   0x000000f4   Code   RO         4850    i.disp_set_mode     tm1637.o
+    0x08008a00   0x08008a00   0x00000054   Code   RO         4456    i.filter_median     func.o
+    0x08008a54   0x08008a54   0x00000006   Code   RO         4528    i.flash_read        main.o
+    0x08008a5a   0x08008a5a   0x00000002   PAD
+    0x08008a5c   0x08008a5c   0x000001b4   Code   RO         5384    i.func_acs2         wifi_esp8266.o
+    0x08008c10   0x08008c10   0x00000064   Code   RO         4529    i.func_air_control  main.o
+    0x08008c74   0x08008c74   0x00000388   Code   RO         4530    i.func_get_data_TCP  main.o
+    0x08008ffc   0x08008ffc   0x000000b8   Code   RO         4531    i.func_heat         main.o
+    0x080090b4   0x080090b4   0x0000011c   Code   RO         4532    i.func_synchro      main.o
+    0x080091d0   0x080091d0   0x00000020   Code   RO         5031    i.get_cor           usbd_custom_hid_core.o
+    0x080091f0   0x080091f0   0x0000039c   Code   RO         4697    i.get_val_for_SET   stm32f0xx_it.o
+    0x0800958c   0x0800958c   0x00000094   Code   RO         5385    i.getstr_BUF_USB    wifi_esp8266.o
+    0x08009620   0x08009620   0x00000040   Code   RO         5292    i.init_ADC_STM      user_init.o
+    0x08009660   0x08009660   0x00000044   Code   RO         5293    i.init_GPIO_ineterrupt  user_init.o
+    0x080096a4   0x080096a4   0x0000007c   Code   RO         5294    i.init_PORT_ADC     user_init.o
+    0x08009720   0x08009720   0x000000a0   Code   RO         5295    i.init_PORT_B       user_init.o
+    0x080097c0   0x080097c0   0x000004c8   Code   RO         5386    i.init_WIFI_server  wifi_esp8266.o
+    0x08009c88   0x08009c88   0x00000144   Code   RO         5387    i.init_constTxt     wifi_esp8266.o
+    0x08009dcc   0x08009dcc   0x00000010   Code   RO         5296    i.init_gpio_        user_init.o
+    0x08009ddc   0x08009ddc   0x00000240   Code   RO         4457    i.init_out_for_SMART  func.o
+    0x0800a01c   0x0800a01c   0x000001bc   Code   RO         5388    i.init_paramESP8266  wifi_esp8266.o
+    0x0800a1d8   0x0800a1d8   0x00000040   Code   RO         5297    i.init_tmr          user_init.o
+    0x0800a218   0x0800a218   0x0000004c   Code   RO         5298    i.init_tmr16        user_init.o
+    0x0800a264   0x0800a264   0x00000044   Code   RO         5299    i.init_tmr2         user_init.o
+    0x0800a2a8   0x0800a2a8   0x00000038   Code   RO         5300    i.iwdg_init         user_init.o
+    0x0800a2e0   0x0800a2e0   0x00000040   Code   RO         4533    i.led_answer        main.o
+    0x0800a320   0x0800a320   0x0000000c   Code   RO         5301    i.led_one_OFF       user_init.o
+    0x0800a32c   0x0800a32c   0x00000008   Code   RO         5302    i.led_one_ON        user_init.o
+    0x0800a334   0x0800a334   0x0000003c   Code   RO         4534    i.load_DEF_setESP   main.o
+    0x0800a370   0x0800a370   0x00000eec   Code   RO         4535    i.main              main.o
+    0x0800b25c   0x0800b25c   0x000000b4   Code   RO         4536    i.out_echo_from_ESP  main.o
+    0x0800b310   0x0800b310   0x000000c8   Code   RO         4851    i.out_temp_LCDTM1637  tm1637.o
+    0x0800b3d8   0x0800b3d8   0x000009fc   Code   RO         5574    i.pow               m_ps.l(pow.o)
+    0x0800bdd4   0x0800bdd4   0x000000b8   Code   RO         5389    i.programm_resetESP  wifi_esp8266.o
+    0x0800be8c   0x0800be8c   0x0000005c   Code   RO         5032    i.read_FLASH_CORR   usbd_custom_hid_core.o
+    0x0800bee8   0x0800bee8   0x00000454   Code   RO         4537    i.read_modework     main.o
+    0x0800c33c   0x0800c33c   0x00000198   Code   RO         5390    i.ready_rep         wifi_esp8266.o
+    0x0800c4d4   0x0800c4d4   0x00000274   Code   RO         5391    i.ready_send_dataWIFI  wifi_esp8266.o
+    0x0800c748   0x0800c748   0x0000014c   Code   RO         4538    i.ready_str_for_alarm  main.o
+    0x0800c894   0x0800c894   0x000009a8   Code   RO         4458    i.real_temp         func.o
+    0x0800d23c   0x0800d23c   0x00000398   Code   RO         5392    i.recieved_word     wifi_esp8266.o
+    0x0800d5d4   0x0800d5d4   0x0000003c   Code   RO         4539    i.reset_ESP8266     main.o
+    0x0800d610   0x0800d610   0x00000024   Code   RO         5394    i.reset_exist_connect  wifi_esp8266.o
+    0x0800d634   0x0800d634   0x00000028   Code   RO         4459    i.run_ADCSTM        func.o
+    0x0800d65c   0x0800d65c   0x000000c0   Code   RO         5033    i.save_CORR_DEF     usbd_custom_hid_core.o
+    0x0800d71c   0x0800d71c   0x000000a8   Code   RO         5034    i.save_coeff_cor    usbd_custom_hid_core.o
+    0x0800d7c4   0x0800d7c4   0x000000b8   Code   RO         4540    i.save_modework     main.o
+    0x0800d87c   0x0800d87c   0x00000134   Code   RO         4541    i.save_net          main.o
+    0x0800d9b0   0x0800d9b0   0x00000020   Code   RO         5395    i.sendUSB_getCOM_data  wifi_esp8266.o
+    0x0800d9d0   0x0800d9d0   0x00000210   Code   RO         5396    i.send_CIPSEND_mail  wifi_esp8266.o
+    0x0800dbe0   0x0800dbe0   0x00000854   Code   RO         5397    i.send_MAIL         wifi_esp8266.o
+    0x0800e434   0x0800e434   0x0000001a   Code   RO         5398    i.send_data_clientWIFI  wifi_esp8266.o
+    0x0800e44e   0x0800e44e   0x00000002   PAD
+    0x0800e450   0x0800e450   0x00000038   Code   RO         4927    i.send_integer      usart_stm.o
+    0x0800e488   0x0800e488   0x000000dc   Code   RO         5399    i.send_str_USB      wifi_esp8266.o
+    0x0800e564   0x0800e564   0x00000400   Code   RO         5400    i.set_newNET        wifi_esp8266.o
+    0x0800e964   0x0800e964   0x0000031c   Code   RO         4698    i.show_data         stm32f0xx_it.o
+    0x0800ec80   0x0800ec80   0x0000015c   Code   RO         5401    i.size_get_bytes_from_com  wifi_esp8266.o
+    0x0800eddc   0x0800eddc   0x00000048   Code   RO         5584    i.sqrt              m_ps.l(sqrt.o)
+    0x0800ee24   0x0800ee24   0x000000cc   Code   RO         5402    i.start_wait_word   wifi_esp8266.o
+    0x0800eef0   0x0800eef0   0x0000002c   Code   RO         5403    i.wait_OK           wifi_esp8266.o
+    0x0800ef1c   0x0800ef1c   0x0000014c   Code   RO         4460    i.work_ADC_STM      func.o
+    0x0800f068   0x0800f068   0x00000064   Code   RO         5557    x$fpl$deqf          fz_ps.l(deqf.o)
+    0x0800f0cc   0x0800f0cc   0x00000064   Code   RO         5567    x$fpl$dleqf         fz_ps.l(dlef.o)
+    0x0800f130   0x0800f130   0x00000068   Code   RO         5571    x$fpl$drleqf        fz_ps.l(drlef.o)
+    0x0800f198   0x0800f198   0x00000000   Code   RO         5604    x$fpl$usenofp       fz_ps.l(usenofp.o)
+    0x0800f198   0x0800f198   0x0000001a   Data   RO         4852    .constdata          tm1637.o
+    0x0800f1b2   0x0800f1b2   0x00000002   PAD
+    0x0800f1b4   0x0800f1b4   0x00000030   Data   RO         4930    .constdata          usart_stm.o
+    0x0800f1e4   0x0800f1e4   0x0000005b   Data   RO         5036    .constdata          usbd_custom_hid_core.o
+    0x0800f23f   0x0800f23f   0x00000020   Data   RO         5133    .constdata          usbd_desc.o
+    0x0800f25f   0x0800f25f   0x00000005   Data   RO         5405    .constdata          wifi_esp8266.o
+    0x0800f264   0x0800f264   0x00000080   Data   RO         5555    .constdata          fz_ps.l(ddiv.o)
+    0x0800f2e4   0x0800f2e4   0x00000004   PAD
+    0x0800f2e8   0x0800f2e8   0x00000088   Data   RO         5575    .constdata          m_ps.l(pow.o)
+    0x0800f370   0x0800f370   0x00000008   Data   RO         5623    .constdata          m_ps.l(qnan.o)
+    0x0800f378   0x0800f378   0x00000127   Data   RO         4544    .conststring        main.o
+    0x0800f49f   0x0800f49f   0x00000001   PAD
+    0x0800f4a0   0x0800f4a0   0x00000030   Data   RO         5795    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x0800f510, Size: 0x000000c0, Max: 0x000000c0, ABSOLUTE)
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x0800f4d0, Size: 0x000000c0, Max: 0x000000c0, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000        -       0x000000c0   Zero   RW         4541    .ARM.__AT_0x20000000  main.o
+    0x20000000        -       0x000000c0   Zero   RW         4542    .ARM.__AT_0x20000000  main.o
 
 
-    Execution Region RW_IRAM2 (Exec base: 0x200000c4, Load base: 0x0800f510, Size: 0x00002d9c, Max: 0x00003f40, ABSOLUTE, COMPRESSED[0x000004b8])
+    Execution Region RW_IRAM2 (Exec base: 0x200000c4, Load base: 0x0800f4d0, Size: 0x00002d9c, Max: 0x00003f40, ABSOLUTE, COMPRESSED[0x000004b8])
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -3196,25 +3213,25 @@ Memory Map of the image
     0x20000100   COMPRESSED   0x00000005   Data   RW         4370    .data               usbd_req.o
     0x20000105   COMPRESSED   0x00000003   PAD
     0x20000108   COMPRESSED   0x00000038   Data   RW         4463    .data               func.o
-    0x20000140   COMPRESSED   0x00000458   Data   RW         4544    .data               main.o
-    0x20000598   COMPRESSED   0x0000003b   Data   RW         4694    .data               stm32f0xx_it.o
-    0x200005d3   COMPRESSED   0x00000001   Data   RW         4847    .data               tm1637.o
-    0x200005d4   COMPRESSED   0x0000001e   Data   RW         4926    .data               usart_stm.o
+    0x20000140   COMPRESSED   0x00000458   Data   RW         4545    .data               main.o
+    0x20000598   COMPRESSED   0x0000003b   Data   RW         4700    .data               stm32f0xx_it.o
+    0x200005d3   COMPRESSED   0x00000001   Data   RW         4853    .data               tm1637.o
+    0x200005d4   COMPRESSED   0x0000001e   Data   RW         4932    .data               usart_stm.o
     0x200005f2   COMPRESSED   0x00000002   PAD
-    0x200005f4   COMPRESSED   0x00000044   Data   RW         5031    .data               usbd_custom_hid_core.o
-    0x20000638   COMPRESSED   0x00000036   Data   RW         5128    .data               usbd_desc.o
-    0x2000066e   COMPRESSED   0x00000002   Data   RW         5197    .data               usbd_pwr.o
-    0x20000670   COMPRESSED   0x0000001c   Data   RW         5239    .data               usbd_usr.o
-    0x2000068c   COMPRESSED   0x0000006c   Data   RW         5399    .data               wifi_esp8266.o
+    0x200005f4   COMPRESSED   0x00000044   Data   RW         5037    .data               usbd_custom_hid_core.o
+    0x20000638   COMPRESSED   0x00000036   Data   RW         5134    .data               usbd_desc.o
+    0x2000066e   COMPRESSED   0x00000002   Data   RW         5203    .data               usbd_pwr.o
+    0x20000670   COMPRESSED   0x0000001c   Data   RW         5245    .data               usbd_usr.o
+    0x2000068c   COMPRESSED   0x0000006c   Data   RW         5406    .data               wifi_esp8266.o
     0x200006f8        -       0x00000040   Zero   RW         4369    .bss                usbd_req.o
     0x20000738        -       0x00000280   Zero   RW         4461    .bss                func.o
-    0x200009b8        -       0x00000524   Zero   RW         4542    .bss                main.o
-    0x20000edc        -       0x0000014c   Zero   RW         4693    .bss                stm32f0xx_it.o
-    0x20001028        -       0x00000014   Zero   RW         4923    .bss                usart_stm.o
-    0x2000103c        -       0x00000440   Zero   RW         5029    .bss                usbd_custom_hid_core.o
+    0x200009b8        -       0x00000524   Zero   RW         4543    .bss                main.o
+    0x20000edc        -       0x0000014c   Zero   RW         4699    .bss                stm32f0xx_it.o
+    0x20001028        -       0x00000014   Zero   RW         4929    .bss                usart_stm.o
+    0x2000103c        -       0x00000440   Zero   RW         5035    .bss                usbd_custom_hid_core.o
     0x2000147c   COMPRESSED   0x00000004   PAD
-    0x20001480        -       0x00001380   Zero   RW         5397    .bss                wifi_esp8266.o
-    0x20002800        -       0x00000060   Zero   RW         5639    .bss                c_p.l(libspace.o)
+    0x20001480        -       0x00001380   Zero   RW         5404    .bss                wifi_esp8266.o
+    0x20002800        -       0x00000060   Zero   RW         5651    .bss                c_p.l(libspace.o)
     0x20002860        -       0x00000200   Zero   RW            2    HEAP                startup_stm32f072.o
     0x20002a60        -       0x00000400   Zero   RW            1    STACK               startup_stm32f072.o
 
@@ -3227,7 +3244,7 @@ Image component sizes
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
       3504        200          0         56        640       7367   func.o
-      7940       1260        295       1112       1508      27475   main.o
+      7748       1156        295       1112       1508      27974   main.o
         56         26        192          0       1536        656   startup_stm32f072.o
        190          0          0          0          0     213619   stm32f0xx_adc.o
         12          6          0          0          0        493   stm32f0xx_exti.o
@@ -3255,10 +3272,10 @@ Image component sizes
       1520         42          0          5         64       9219   usbd_req.o
         10          0          0         28          0       2352   usbd_usr.o
        856        102          0          0          0      11721   user_init.o
-      9338       2038          5        108       4992      22091   wifi_esp8266.o
+      9462       2094          5        108       4992      22599   wifi_esp8266.o
 
     ----------------------------------------------------------------------
-     37752       5016        740       1588      10184     407762   Object Totals
+     37684       4968        740       1588      10184     408769   Object Totals
          0          0         48          0          0          0   (incl. Generated)
         34          0          3          5          4          0   (incl. Padding)
 
@@ -3316,8 +3333,8 @@ Image component sizes
         72          6          0          0          0         76   sqrt.o
 
     ----------------------------------------------------------------------
-      7588        374        272          0         96       3184   Library Totals
-         6          0          0          0          0          0   (incl. Padding)
+      7588        374        276          0         96       3184   Library Totals
+         6          0          4          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -3328,7 +3345,7 @@ Image component sizes
       2928        220        144          0          0        792   m_ps.l
 
     ----------------------------------------------------------------------
-      7588        374        272          0         96       3184   Library Totals
+      7588        374        276          0         96       3184   Library Totals
 
     ----------------------------------------------------------------------
 
@@ -3337,15 +3354,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     45340       5390       1012       1588      10280     399326   Grand Totals
-     45340       5390       1012       1208      10280     399326   ELF Image Totals (compressed)
-     45340       5390       1012       1208          0          0   ROM Totals
+     45272       5342       1016       1588      10280     400245   Grand Totals
+     45272       5342       1016       1208      10280     400245   ELF Image Totals (compressed)
+     45272       5342       1016       1208          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                46352 (  45.27kB)
+    Total RO  Size (Code + RO Data)                46288 (  45.20kB)
     Total RW  Size (RW Data + ZI Data)             11868 (  11.59kB)
-    Total ROM Size (Code + RO Data + RW Data)      47560 (  46.45kB)
+    Total ROM Size (Code + RO Data + RW Data)      47496 (  46.38kB)
 
 ==============================================================================
 
