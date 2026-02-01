@@ -1449,7 +1449,7 @@ I (.\Periph_drv\INC\stm32f0xx_usart.h)(0x60B65D02)
 I (.\Periph_drv\INC\stm32f0xx_wwdg.h)(0x60B65D02)
 I (.\Periph_drv\INC\stm32f0xx_misc.h)(0x60B65D02)
 I (.\USER\INC\func.h)(0x615885B6)
-F (.\USER\SRC\wifi_esp8266.c)(0x697F57BB)(--c99 -c --cpu Cortex-M0 -g -O0 --apcs=interwork --split_sections -I .\ARM_ST\INC -I .\Periph_drv\INC -I .\USB_drv\INC -I .\USB_lib\INC -I .\USER\INC-I.\RTE\_Prj-IC:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\1.4.0\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F072 -DUSE_STDPERIPH_DRIVER -DSTM32F072 -DUSE_USB_DEVICE_FS -DINTERNAL_PULLUP-o .\objects\wifi_esp8266.o --omf_browse .\objects\wifi_esp8266.crf --depend .\objects\wifi_esp8266.d)
+F (.\USER\SRC\wifi_esp8266.c)(0x697F8E91)(--c99 -c --cpu Cortex-M0 -g -O0 --apcs=interwork --split_sections -I .\ARM_ST\INC -I .\Periph_drv\INC -I .\USB_drv\INC -I .\USB_lib\INC -I .\USER\INC-I.\RTE\_Prj-IC:\Keil_v5\ARM\PACK\Keil\STM32F0xx_DFP\1.4.0\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F072 -DUSE_STDPERIPH_DRIVER -DSTM32F072 -DUSE_USB_DEVICE_FS -DINTERNAL_PULLUP-o .\objects\wifi_esp8266.o --omf_browse .\objects\wifi_esp8266.crf --depend .\objects\wifi_esp8266.d)
 I (.\USER\INC\wifi_esp8266.h)(0x69693992)
 I (.\USER\INC\usart_stm.h)(0x60B65D02)
 I (.\Periph_drv\INC\stm32f0xx_usart.h)(0x60B65D02)

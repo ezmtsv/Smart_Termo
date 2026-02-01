@@ -1079,7 +1079,7 @@ void send_MAIL (char* txt_mail_str, char* sub_mail, bool from_dim_txt) {
 	}
 	count_answ = 0;
 								////////////////////////////////
-/*	
+	
 		if (connect) {
 		DelaymS (delay_pack);
 		ch = "To: AppD";																								// заменяем в массиве первые 8 символов
@@ -1122,7 +1122,7 @@ void send_MAIL (char* txt_mail_str, char* sub_mail, bool from_dim_txt) {
 		out_echo_from_ESP();							// эхо от ESP для дебага
 	}
 	count_answ = 0;
-	*/
+	
 						////////////////////////////////
 
 	if (connect) {
