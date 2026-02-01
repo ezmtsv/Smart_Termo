@@ -7,6 +7,6 @@
 *.tar.gz
 *.rar
 *.png
-Keil_termo_with_boiler/Listings
-Keil_termo_with_boiler/Objects
+Keil_termo_with_boiler\Listings
+Keil_termo_with_boiler\Objects
 

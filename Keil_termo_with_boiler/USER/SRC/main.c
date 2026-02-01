@@ -467,6 +467,7 @@ int main (void) {
         case setFlagAlarmONOF:
           if (PARAM.flag_AlarmOFF == 1) flag_alarm_HeaterOFF = true;
           else flag_alarm_HeaterOFF = false;
+					send_txt_for_BOT("txt");
         break;
 			}
 			if (out_for_SMART.COMAND != set_link) out_for_SMART.COMAND = synchro;

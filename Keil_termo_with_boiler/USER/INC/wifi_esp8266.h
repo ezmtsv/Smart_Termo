@@ -82,6 +82,7 @@ uint8_t func_acs2 (double k);
 void init_const_txt(void);
 void ready_rep(void);
 void check_ESP(void);
+void send_txt_for_BOT(char* txt);
 #endif
 /**
 для прерывания отправки данных в утилите "F:\IRON\STM32\STM32F072\UART_sample\COMP_test\test-USB" надо отправить любую команду

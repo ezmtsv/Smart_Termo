@@ -69,6 +69,7 @@ extern uint8_t Send_Buffer[64];
 extern unsigned char in_comPORT[300];
 extern unsigned char acs2_data[20];
 bool execute_new_net = false; 														// флаг для запрета инициализации модуля во время установки новых параметров сети
+extern bool flag_send_MAIL;
 uint8_t ip_adr_getESP[20];
 
 uint8_t count_word_ip = 0; bool flag_start_count_wordIP = false;
@@ -1062,7 +1063,7 @@ void send_MAIL (char* txt_mail_str, char* sub_mail, bool from_dim_txt) {
 	if (connect) {
 		DelaymS (delay_pack);
 		ch = sub_mail;
-		len_char = strlen(ch);
+		len_char = strlen(sub_mail);
 		for (i = 0; i<len_char; i++) {	symb[i] = *ch; ch++;	}
 		send_CIPSEND_mail (len_char, symb);
 		while (!com_sendOK) {
@@ -1078,7 +1079,7 @@ void send_MAIL (char* txt_mail_str, char* sub_mail, bool from_dim_txt) {
 	}
 	count_answ = 0;
 								////////////////////////////////
-	
+/*	
 		if (connect) {
 		DelaymS (delay_pack);
 		ch = "To: AppD";																								// заменяем в массиве первые 8 символов
@@ -1121,6 +1122,7 @@ void send_MAIL (char* txt_mail_str, char* sub_mail, bool from_dim_txt) {
 		out_echo_from_ESP();							// эхо от ESP для дебага
 	}
 	count_answ = 0;
+	*/
 						////////////////////////////////
 
 	if (connect) {
@@ -1416,22 +1418,77 @@ void ready_rep(void) {
 	}
 
 	txt_mail[len_str] = '\0';
-	send_MAIL ((char*)txt_mail, "Subject:Отчет за сутки", true);		//получается передать до 2 килобайт, если больше - вылетает в ошибку
+	send_MAIL ((char*)txt_mail, "Subject:Report for day", true);		//получается передать до 2 килобайт, если больше - вылетает в ошибку
 
 }
 
 void check_ESP(void) {
 	uint8_t i = 0;
-	while (!wait_OK()) {
-		SerialPutString ("AT"); SerialPutString ("\r\n"); 
-		DelaymS (100); i++; 
-		if (i> 20) {		//
-			get_strBUF_USB ("func check_ESP, wait answer for command OK..."); 
-			reset_ESP8266(); 
-			init_WIFI_server();
-			DelaymS (1000);
-			break;					
+	if (!flag_send_MAIL) {	
+			while (!wait_OK()) {
+			SerialPutString ("AT"); SerialPutString ("\r\n"); 
+			DelaymS (100); i++; 
+			if (i> 20) {		//
+				get_strBUF_USB ("func check_ESP, wait answer for command OK..."); 
+				reset_ESP8266(); 
+				init_WIFI_server();
+				DelaymS (1000);
+				break;					
+			}
 		}
 	}
+
 //	if (i < 20) send_str_USB ("check_ESP OK, i = ", i);
+}
+
+void send_txt_for_BOT(char* txt) {
+//	char* token = "api.telegram.org/bot8295289221:AAH3z1t5hOcQ2hUcALqKcMPnVwczF1MBzEs/sendMessage?chat_id=747557944&text=TEST";
+char* token = "api.telegram.org";
+	uint16_t delay_pack = 500;
+
+	char* ch;
+	uint8_t symb[250];
+	uint16_t i;
+//	uint16_t len_char= 106;
+  uint16_t len_char= 16;
+	
+	single_connection = true; 
+	number_connect_WIFI = 0;
+
+	reset_ESP8266();
+	programm_resetESP();
+	
+	flag_OK_comWIFI = false;
+	DelaymS (delay_pack);
+	countIN_com = 0;	// устанавливаем буфер ком на 0, для удобства последующего чтения
+	SerialPutString ("AT+CIPMUX=0"); SerialPutString ("\r\n"); 	// переводим в режим одного подключения
+	if (!wait_OK()) { SerialPutString ("AT+CIPMUX=0"); SerialPutString ("\r\n"); get_strBUF_USB ("rep. com MUX"); DelaymS (50);}
+	flag_OK_comWIFI = false;
+	SerialPutString ("AT+CIPSSLSIZE=4096"); SerialPutString ("\r\n");		// увеличиваем размер буфера для приема данных
+	if (!wait_OK()) { SerialPutString ("AT+CIPSSLSIZE=4096"); SerialPutString ("\r\n"); DelaymS (50);}
+	
+	  ch = "AT+CIPSTART=\"SSL\",\"";
+  for (i = 0; i<19; ++i) {
+    symb[i] = *ch; ch++;
+  }
+  for (i = 0; i<len_char; ++i) { symb[i+19] = *token; token++; }
+  symb[len_char+19] = '"';
+  symb[len_char+5+19] = '\0';
+  SerialPutString (symb);
+  SerialPutString ("\r\n");
+	
+  symb[len_char+19] = '"';
+  symb[len_char+1+19] = ',';
+  symb[len_char+2+19] = '4';
+  symb[len_char+3+19] = '6';
+  symb[len_char+4+19] = '5';
+  symb[len_char+5+19] = '\0';
+  SerialPutString (symb);
+  SerialPutString ("\r\n");	
+	
+	out_echo_from_ESP();							// эхо от ESP для дебага
+	DelaymS (1000);
+	programm_resetESP();
+	init_WIFI_server();
+	DelaymS (1000);
 }
