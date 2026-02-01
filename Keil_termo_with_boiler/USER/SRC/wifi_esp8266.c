@@ -1442,7 +1442,7 @@ void check_ESP(void) {
 }
 
 void send_txt_for_BOT(char* txt) {
-//	char* token = "api.telegram.org/bot8295289221:AAH3z1t5hOcQ2hUcALqKcMPnVwczF1MBzEs/sendMessage?chat_id=747557944&text=TEST";
+
 char* token = "api.telegram.org";
 	uint16_t delay_pack = 500;
 
